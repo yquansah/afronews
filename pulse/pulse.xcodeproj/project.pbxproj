@@ -54,14 +54,38 @@
 		24E8242122B88141006EAE11 /* pulse */ = {
 			isa = PBXGroup;
 			children = (
-				24E8242222B88141006EAE11 /* AppDelegate.swift */,
-				24E8242422B88141006EAE11 /* ViewController.swift */,
-				24E8242622B88141006EAE11 /* Main.storyboard */,
+				86A3A08722D8328500A8DE84 /* controller */,
+				86A3A08622D8328000A8DE84 /* view */,
+				86A3A08522D8325300A8DE84 /* model */,
 				24E8242922B88145006EAE11 /* Assets.xcassets */,
-				24E8242B22B88145006EAE11 /* LaunchScreen.storyboard */,
 				24E8242E22B88145006EAE11 /* Info.plist */,
 			);
 			path = pulse;
+			sourceTree = "<group>";
+		};
+		86A3A08522D8325300A8DE84 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		86A3A08622D8328000A8DE84 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				24E8242622B88141006EAE11 /* Main.storyboard */,
+				24E8242B22B88145006EAE11 /* LaunchScreen.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		86A3A08722D8328500A8DE84 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				24E8242222B88141006EAE11 /* AppDelegate.swift */,
+				24E8242422B88141006EAE11 /* ViewController.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
