@@ -1,6 +1,6 @@
 # afronews
 ## Before Developing
-- Make sure you are on staging branch then run a `git pull origin staging` or more verbose command `git fetch` and `git merge origin/staging`, to make sure everything is up to date locally with `staging`
+- Make sure you are on `staging` branch locally then run a `git pull origin staging` or more verbose command `git fetch` and `git merge origin/staging`, to make sure everything is up to date locally with `staging`
 - Create a development branch off of staging (`git checkout -b branch_name`)
 - Run `pod install` to get the updated dependencies from cocoapods
 
