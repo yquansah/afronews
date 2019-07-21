@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        let ac = UIAlertController(title: "Hello!", message: "How goes it?", preferredStyle: .alert)
+        present(ac, animated: true)
     }
 
 }
