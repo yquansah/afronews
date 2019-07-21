@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
@@ -14,5 +16,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    // Request to news api made here
+    func makeApiRequest(completionHandler: @escaping (Any) -> Void) {
+        var params: [String: String] = ["q": "ghana", "sortBy": "publishedAt"]
+        apiRequest(index: 0, params: &params, completion: completionHandler)
+    }
 }
