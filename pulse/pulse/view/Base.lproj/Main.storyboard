@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="0qI-1R-wFe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7fG-cU-WGL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ea4-4a-rel"/>
@@ -46,17 +46,16 @@
             </objects>
             <point key="canvasLocation" x="-658" y="-214"/>
         </scene>
-        <!--Item 1-->
+        <!--Feed-->
         <scene sceneID="zIN-J5-3AW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3RT-3r-gDF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" image="feed" id="icX-r0-OAv"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed" id="icX-r0-OAv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="fzR-af-KMm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="fzR-af-KMm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -70,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="728.98550724637687" y="-474.10714285714283"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Feed-->
         <scene sceneID="m1l-Gs-rC9">
             <objects>
                 <tableViewController id="QTf-2O-4P0" sceneMemberID="viewController">
@@ -83,19 +82,23 @@
                             <outlet property="delegate" destination="QTf-2O-4P0" id="SoK-eq-vUe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="yMw-us-Xmm"/>
+                    <navigationItem key="navigationItem" title="Feed" id="yMw-us-Xmm">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="uje-m5-YWZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtu-2Y-nl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="-474"/>
+            <point key="canvasLocation" x="1639" y="-467"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Saved-->
         <scene sceneID="GS1-14-EqC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C3C-qg-gcw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="saved" id="Spw-oE-kUf"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="saved" id="Spw-oE-kUf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tSF-hl-QLT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="tSF-hl-QLT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -110,7 +113,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed" width="6.5" height="11"/>
-        <image name="saved" width="8" height="11"/>
+        <image name="feed" width="30" height="30"/>
+        <image name="saved" width="21" height="30"/>
     </resources>
 </document>
