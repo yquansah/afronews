@@ -19,10 +19,4 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: "Hello!", message: "How goes it?", preferredStyle: .alert)
         present(ac, animated: true)
     }
-    
-    // Request to news api made here
-    func makeApiRequest(completionHandler: @escaping (Any) -> Void) {
-        var params: [String: String] = ["q": "ghana", "sortBy": "publishedAt"]
-        apiRequest(index: 0, params: &params, completion: completionHandler)
-    }
 }
