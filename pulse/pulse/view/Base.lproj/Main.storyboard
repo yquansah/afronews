@@ -72,13 +72,13 @@
         <!--Feed-->
         <scene sceneID="m1l-Gs-rC9">
             <objects>
-                <tableViewController id="QTf-2O-4P0" sceneMemberID="viewController">
+                <tableViewController id="QTf-2O-4P0" customClass="MainNewsController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fc1-sd-T5O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pulseCell" rowHeight="176" id="F0K-8M-CwW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pulseCell" rowHeight="176" id="F0K-8M-CwW" customClass="NewsMainCell" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="176"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F0K-8M-CwW" id="mia-A8-2aC">
@@ -170,6 +170,13 @@
                                         <constraint firstItem="Iws-ex-047" firstAttribute="leading" secondItem="1pO-Op-UGU" secondAttribute="trailing" constant="8" id="vFr-VS-Ldg"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="author" destination="2cZ-73-55e" id="VyH-YW-Qo8"/>
+                                    <outlet property="country" destination="Jlk-GF-BL8" id="sbR-eu-QkM"/>
+                                    <outlet property="mainDescription" destination="BD1-tW-hR8" id="9CL-pT-5Pd"/>
+                                    <outlet property="mainImage" destination="Iws-ex-047" id="7Q9-72-kQg"/>
+                                    <outlet property="publishedAt" destination="oKg-3e-fge" id="N00-i6-pDQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
