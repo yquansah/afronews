@@ -13,7 +13,8 @@ import SwiftyJSON
 class MainNewsController: UITableViewController {
     
     // Define variables
-    private var articleStore: ArticleStore = ArticleStore()
+    private var mainArticles = ArticleStore()
+    private var savedArticles = ArticleStore()
     private var api: API!
     
     override func viewDidLoad() {
@@ -45,24 +46,70 @@ class MainNewsController: UITableViewController {
             newArticle.imageURL = result["imageURL"].stringValue
             newArticle.publishedAt = result["publishedAt"].stringValue
             
-            articleStore.allArticles.append(newArticle)
+            mainArticles.allArticles.append(newArticle)
         }
         tableView.reloadData()
     }
+
+//
 
 }
 
 extension MainNewsController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleStore.allArticles.count
+        return mainArticles.allArticles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pulseCell", for: indexPath) as! NewsMainCell
         
-        cell.updateCell(with: articleStore.allArticles[indexPath.row])
+        cell.updateCell(with: mainArticles.allArticles[indexPath.row])
         return cell
     }
-    
+
+
+    //MARK: - Persistency functions
+
+    func saveSelectedAricles() {
+
+        let jsonEncoder = JSONEncoder()
+
+        if let data = try? jsonEncoder.encode(savedArticles) {
+
+            let defaults = UserDefaults.standard
+            defaults.set(data, forKey: "SelectedArticles")
+        }
+
+    }
+
+    func loadSelectedArticles() {
+
+        let defaults = UserDefaults.standard
+        if let data = defaults.object(forKey: "SelectedArticles") as? Data{
+
+            let jsonDecoder = JSONDecoder()
+
+            do {
+
+                savedArticles = try jsonDecoder.decode(ArticleStore.self, from: data)
+
+            } catch {
+
+                let ac = UIAlertController(title: "Load error", message: "Cound not load articles.", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(ac, animated: true)
+            }
+        }
+
+    }
+
+    func saveFilter() {
+
+    }
+
+    func loadFilter() {
+
+    }
+
 }
