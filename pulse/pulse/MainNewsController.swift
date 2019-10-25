@@ -71,7 +71,7 @@ extension MainNewsController {
 
     //MARK: - Persistency functions
 
-    func saveSelectedAricles() {
+    func saveSelectedArticles() {
 
         let jsonEncoder = JSONEncoder()
 
@@ -105,11 +105,11 @@ extension MainNewsController {
     }
 
     func saveFilter() {
-
+//Pending Filter functionality
     }
 
     func loadFilter() {
-
+//Pending Filter functionality
     }
 
 }
