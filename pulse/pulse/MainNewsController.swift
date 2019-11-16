@@ -50,9 +50,6 @@ class MainNewsController: UITableViewController {
         }
         tableView.reloadData()
     }
-
-//
-
 }
 
 extension MainNewsController {
@@ -63,7 +60,6 @@ extension MainNewsController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pulseCell", for: indexPath) as! NewsMainCell
-        
         cell.updateCell(with: mainArticles.allArticles[indexPath.row])
         return cell
     }
@@ -111,5 +107,4 @@ extension MainNewsController {
     func loadFilter() {
 //Pending Filter functionality
     }
-
 }
