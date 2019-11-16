@@ -11,7 +11,7 @@ import UIKit
 class Article: Codable { // Using codable also means no need to init stored properties.
 
     //newsAPI deliverables
-    var author: String = ""
+    var author: String?
     var title: String = ""
     var description: String = ""
     var url: String = ""
