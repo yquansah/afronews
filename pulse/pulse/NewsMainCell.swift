@@ -23,5 +23,4 @@ class NewsMainCell: UITableViewCell {
 //        mainImage.image = UIImage(
     }
     
-    
 }

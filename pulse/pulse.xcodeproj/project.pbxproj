@@ -19,6 +19,7 @@
 		86A5EC032308A2040025073F /* Saved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5EBFF2308A2030025073F /* Saved.swift */; };
 		86A5EC042308A2040025073F /* ArticleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5EC002308A2030025073F /* ArticleStore.swift */; };
 		86A5EC052308A2040025073F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5EC012308A2040025073F /* Filter.swift */; };
+		ADCD56E22380B7FA0036F41A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD56E12380B7FA0036F41A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		86A5EBFF2308A2030025073F /* Saved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saved.swift; sourceTree = "<group>"; };
 		86A5EC002308A2030025073F /* ArticleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStore.swift; sourceTree = "<group>"; };
 		86A5EC012308A2040025073F /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		ADCD56E12380B7FA0036F41A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA129DAA17C6A994EA2CC8CA /* Pods-pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pulse.debug.xcconfig"; path = "Target Support Files/Pods-pulse/Pods-pulse.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				24E8242222B88141006EAE11 /* AppDelegate.swift */,
 				24E8242422B88141006EAE11 /* MainNewsController.swift */,
 				2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */,
+				ADCD56E12380B7FA0036F41A /* DetailViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCD56E22380B7FA0036F41A /* DetailViewController.swift in Sources */,
 				86A5EC052308A2040025073F /* Filter.swift in Sources */,
 				86A5EC022308A2040025073F /* Article.swift in Sources */,
 				24E8242522B88141006EAE11 /* MainNewsController.swift in Sources */,

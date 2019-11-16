@@ -64,8 +64,21 @@ extension MainNewsController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-    //MARK: - Persistency functions
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let childView = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
+
+        self.view.addSubview(childView.view)
+        self.addChild(childView)
+
+        childView.didMove(toParent: self)
+
+        childView.view.frame = CGRect(x: 20, y: 20, width: 400, height: 500)
+
+    }
+
+    // MARK: - Persistency functions
 
     func saveSelectedArticles() {
 
@@ -82,7 +95,7 @@ extension MainNewsController {
     func loadSelectedArticles() {
 
         let defaults = UserDefaults.standard
-        if let data = defaults.object(forKey: "SelectedArticles") as? Data{
+        if let data = defaults.object(forKey: "SelectedArticles") as? Data {
 
             let jsonDecoder = JSONDecoder()
 
