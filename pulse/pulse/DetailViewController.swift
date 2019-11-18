@@ -10,11 +10,25 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var image: String = ""
+    var givenTitle: String = ""
+    var mainDes: String = ""
+    var auth: String = ""
 
+    @IBOutlet private weak var mainImage: UIImageView!
+    @IBOutlet private weak var mainTitle: UILabel!
+    @IBOutlet private weak var mainDescription: UILabel!
+    @IBOutlet private weak var author: UILabel!
+
+    func updateDetailView() {
+        mainTitle.text = givenTitle
+        mainDescription.text = mainDes
+        author.text = auth
 
     }
 
+    @IBAction func redirToSourceButton(_ sender: UIButton) {
+
+    }
 
 }

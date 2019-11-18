@@ -78,8 +78,8 @@
 				86A3A08722D8328500A8DE84 /* controller */,
 				86A3A08622D8328000A8DE84 /* view */,
 				86A3A08522D8325300A8DE84 /* model */,
-				24E8242922B88145006EAE11 /* Assets.xcassets */,
 				24E8242E22B88145006EAE11 /* Info.plist */,
+				24E8242922B88145006EAE11 /* Assets.xcassets */,
 			);
 			path = pulse;
 			sourceTree = "<group>";

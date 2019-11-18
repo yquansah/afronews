@@ -67,15 +67,24 @@ extension MainNewsController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let childView = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
+        //detailVC.updateDetailView(with: mainArticles.allArticles[indexPath.row])
+        detailVC.auth = mainArticles.allArticles[indexPath.row].author!
+        detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
+        detailVC.mainDes = mainArticles.allArticles[indexPath.row].description
 
-        self.view.addSubview(childView.view)
-        self.addChild(childView)
+        self.view.addSubview(detailVC.view)
+        self.addChild(detailVC)
+        detailVC.didMove(toParent: self)
 
-        childView.didMove(toParent: self)
-
-        childView.view.frame = CGRect(x: 20, y: 20, width: 400, height: 500)
-
+        detailVC.view.frame = CGRect(x: 20, y: 20, width: 370, height: 700)
+        detailVC.updateDetailView()
+//        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+//        let horizontalConstraint = detailVC.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        let topConstraint = detailVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 10).isActive = true
+//        let widthConstraint = detailVC.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.92).isActive = true
+//        let heightConstraint = detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
+//       // detailVC.view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
     }
 
     // MARK: - Persistency functions
