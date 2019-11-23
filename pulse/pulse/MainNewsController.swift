@@ -27,7 +27,7 @@ class MainNewsController: UITableViewController {
     
     func populateRequest() {
         
-        var params: [String: Any] = ["q": "cameroon", "sortBy": "publishedAt", "pageSize": 10]
+        var params: [String: Any] = ["q": "ghana", "sortBy": "publishedAt", "pageSize": 10]
         api.makeRequest(index: 0, params: &params) { response in
             let data = JSON(response)
             self.parse(json: data)
@@ -43,7 +43,7 @@ class MainNewsController: UITableViewController {
             newArticle.url =  result["url"].stringValue
             newArticle.author = result["source"]["name"].stringValue
             newArticle.content = result["content"].stringValue
-            newArticle.imageURL = result["imageURL"].stringValue
+            newArticle.imageURL = result["urlToImage"].stringValue
             newArticle.publishedAt = result["publishedAt"].stringValue
             
             mainArticles.allArticles.append(newArticle)

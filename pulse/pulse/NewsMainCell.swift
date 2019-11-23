@@ -20,8 +20,23 @@ class NewsMainCell: UITableViewCell {
         author.text = article.author ?? "No Author"
         mainDescription.text = article.description
         country.text = article.country ?? "Ghana"
-//        mainImage.image = UIImage(
+        if let url = URL(string: article.imageURL) {
+         mainImage.load(url: url)
+        }
     }
-    
-    
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        print(url)
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
