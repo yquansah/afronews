@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     var givenTitle: String = ""
     var mainDes: String = ""
     var auth: String = ""
+    var link: String = ""
 
     @IBOutlet private weak var mainImage: UIImageView!
     @IBOutlet private weak var mainTitle: UILabel!
@@ -28,6 +29,24 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func redirToSourceButton(_ sender: UIButton) {
+        if let url = URL(string: link) {
+            UIApplication.shared.open(url)
+        }
+    }
+    @IBAction func dismissView(_ sender: UIButton) {
+        self.remove()
+
+    }
+
+
+    @IBAction func shareButton(_ sender: UIButton) {
+        let shareText = "Check this out"
+        let objectsToShare = [shareText]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare , applicationActivities: nil)
+        present(activityVC,animated: true)
+    }
+
+    @IBAction func saveButton(_ sender: UIButton) {
 
     }
 

@@ -72,20 +72,31 @@ extension MainNewsController {
         detailVC.auth = mainArticles.allArticles[indexPath.row].author!
         detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
         detailVC.mainDes = mainArticles.allArticles[indexPath.row].description
+        detailVC.link = mainArticles.allArticles[indexPath.row].url
 
-        self.view.addSubview(detailVC.view)
+//        detailVC.providesPresentationContextTransitionStyle = true
+//        detailVC.definesPresentationContext = true
+//        detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//       detailVC.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+
         self.addChild(detailVC)
+        self.view.addSubview(detailVC.view)
         detailVC.didMove(toParent: self)
 
-        detailVC.view.frame = CGRect(x: 20, y: 20, width: 370, height: 700)
+        //detailVC.view.frame = CGRect(x: 20, y: 20, width: 370, height: 700)
         detailVC.updateDetailView()
-//        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
-//        let horizontalConstraint = detailVC.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        let topConstraint = detailVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 10).isActive = true
-//        let widthConstraint = detailVC.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.92).isActive = true
-//        let heightConstraint = detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
-//       // detailVC.view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+
+        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+        detailVC.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        detailVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        detailVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
+        detailVC.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.92).isActive = true
+        detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
+        
+
+
     }
+
 
     // MARK: - Persistency functions
 
@@ -128,5 +139,25 @@ extension MainNewsController {
 
     func loadFilter() {
 //Pending Filter functionality
+    }
+}
+
+extension UIViewController {
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+
+    func remove() {
+        // Just to be safe, we check that this view controller
+        // is actually added to a parent before removing it.
+        guard parent != nil else {
+            return
+        }
+
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }
