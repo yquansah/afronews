@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */; };
 		2464F3912380BDAE004236A1 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464F3902380BDAE004236A1 /* FilterViewController.swift */; };
+		24C96C6723B0C30E006B8642 /* TopicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C96C6623B0C30E006B8642 /* TopicCellView.swift */; };
+		24C96C6923B0CAF1006B8642 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C96C6823B0CAF1006B8642 /* TopicCell.swift */; };
+		24C96C6B23B330CE006B8642 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C96C6A23B330CE006B8642 /* CountryCell.swift */; };
+		24C96C6D23B33283006B8642 /* CountriesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C96C6C23B33283006B8642 /* CountriesCellView.swift */; };
 		24E8242322B88141006EAE11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8242222B88141006EAE11 /* AppDelegate.swift */; };
 		24E8242522B88141006EAE11 /* MainNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8242422B88141006EAE11 /* MainNewsController.swift */; };
 		24E8242822B88141006EAE11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E8242622B88141006EAE11 /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMainCell.swift; sourceTree = "<group>"; };
 		2464F3902380BDAE004236A1 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		24C96C6623B0C30E006B8642 /* TopicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCellView.swift; sourceTree = "<group>"; };
+		24C96C6823B0CAF1006B8642 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		24C96C6A23B330CE006B8642 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		24C96C6C23B33283006B8642 /* CountriesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesCellView.swift; sourceTree = "<group>"; };
 		24E8241F22B88141006EAE11 /* pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8242222B88141006EAE11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24E8242422B88141006EAE11 /* MainNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNewsController.swift; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 				24E8242422B88141006EAE11 /* MainNewsController.swift */,
 				2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */,
 				2464F3902380BDAE004236A1 /* FilterViewController.swift */,
+				24C96C6623B0C30E006B8642 /* TopicCellView.swift */,
+				24C96C6C23B33283006B8642 /* CountriesCellView.swift */,
+				24C96C6823B0CAF1006B8642 /* TopicCell.swift */,
+				24C96C6A23B330CE006B8642 /* CountryCell.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -276,11 +288,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A5EC052308A2040025073F /* Filter.swift in Sources */,
+				24C96C6923B0CAF1006B8642 /* TopicCell.swift in Sources */,
 				86A5EC022308A2040025073F /* Article.swift in Sources */,
 				24E8242522B88141006EAE11 /* MainNewsController.swift in Sources */,
+				24C96C6723B0C30E006B8642 /* TopicCellView.swift in Sources */,
+				24C96C6D23B33283006B8642 /* CountriesCellView.swift in Sources */,
 				2464F3912380BDAE004236A1 /* FilterViewController.swift in Sources */,
 				860115E422E3BE36007FDDE0 /* afronewsapi.swift in Sources */,
 				24E8242322B88141006EAE11 /* AppDelegate.swift in Sources */,
+				24C96C6B23B330CE006B8642 /* CountryCell.swift in Sources */,
 				86A5EC042308A2040025073F /* ArticleStore.swift in Sources */,
 				86A5EC032308A2040025073F /* Saved.swift in Sources */,
 				2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */,
