@@ -16,6 +16,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     // Properties
     private let topicCellViewID = "topicViewCell"
     private let countryCellViewID = "countryCellView"
+    private let headerCellID = "headerCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +45,40 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         // Cells
         collectionView.register(TopicCellView.self, forCellWithReuseIdentifier: topicCellViewID)
         collectionView.register(CountriesCellView.self, forCellWithReuseIdentifier: countryCellViewID)
+        collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellID)
     }
     
+    private func clearAll() {
+        for path in collectionView.indexPathsForVisibleItems {
+            
+            if path.section == 0 {
+                let firstCell = collectionView.cellForItem(at: path) as! TopicCellView
+                firstCell.collectionView.indexPathsForSelectedItems?.forEach { selectedPaths in
+                    
+                    let cell = firstCell.collectionView.cellForItem(at: selectedPaths) as! TopicCell
+                    cell.viewToDim.isHidden = true
+                }
+            }
+            else {
+                if let secondCell = collectionView.cellForItem(at: path) as? CountriesCellView {
+                    
+                    secondCell.collectionView.indexPathsForSelectedItems?.forEach { selectedPaths in
+                        if let cell = secondCell.collectionView.cellForItem(at: selectedPaths) as? CountryCell {
+                            cell.viewToDim.isHidden = true
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+        
+        // Empty array of selected items here
+    }
+    
+    //MARK:- Obc Functions
     @objc private func clearButton() {
-//        collectionView.reloadData()
-        collectionView.indexPathsForSelectedItems?.forEach { self.collectionView.deselectItem(at: $0, animated: false)}
+        clearAll()
     }
     
     @objc private func doneButton() {
@@ -81,6 +111,18 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
             return CGSize(width: view.frame.width, height: firstCellHeight)
         }
         return CGSize(width: view.frame.width, height: secondCellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 45)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellID, for: indexPath) as! HeaderCell
+        if indexPath.section == 1 {
+            header.nameLabel.text = "Country"
+        }
+        return header
     }
 }
 

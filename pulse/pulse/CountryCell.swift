@@ -25,8 +25,15 @@ class CountryCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Cameroon"
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 8)
+        label.font = UIFont.boldSystemFont(ofSize: 10)
         return label
+    }()
+    
+    var viewToDim: UIView = {
+        let uiView = UIView()
+        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        uiView.isHidden = true
+        return uiView
     }()
     
     override init(frame: CGRect) {
@@ -39,11 +46,20 @@ class CountryCell: UICollectionViewCell {
     }
     
     private func setupView() {
+        addSubview(viewToDim)
         addSubview(imageView)
         addSubview(nameLabel)
+        
+        viewToDim.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        
         let imageHeight = frame.width * (2/3)
         let labelHeight = frame.width * (1/3)
         imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: imageHeight)
         nameLabel.frame = CGRect(x: 0, y: imageHeight, width: frame.width, height: labelHeight)
+    }
+    
+    func updateCell(with name: String) {
+        imageView.image = UIImage(named: name)
+        nameLabel.text = name
     }
 }

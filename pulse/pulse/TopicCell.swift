@@ -17,7 +17,7 @@ class TopicCell: UICollectionViewCell {
     var imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "obama")
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .center
         return iv
     }()
     
@@ -25,8 +25,15 @@ class TopicCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Entertainment"
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 8)
+        label.font = UIFont.boldSystemFont(ofSize: 10)
         return label
+    }()
+    
+    var viewToDim: UIView = {
+        let uiView = UIView()
+        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        uiView.isHidden = true
+        return uiView
     }()
     
     override init(frame: CGRect) {
@@ -39,15 +46,19 @@ class TopicCell: UICollectionViewCell {
     }
     
     private func setupView() {
+        addSubview(viewToDim)
         addSubview(imageView)
         addSubview(nameLabel)
+        
+        viewToDim.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        
         let nameHeight = frame.height - frame.width - 1
         imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
         nameLabel.frame = CGRect(x: 0, y: frame.width, width: frame.width, height: nameHeight)
     }
     
-    func updateCell(with name: String) {
-        imageView.image = UIImage(named: "obama")
-        nameLabel.text = name
+    func updateCell(with name: FilterData) {
+        imageView.image = UIImage(named: name.itemName)
+        nameLabel.text = name.itemName
     }
 }

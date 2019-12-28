@@ -15,7 +15,7 @@ class CountriesCellView: UICollectionViewCell {
      */
     
     // Properties
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
@@ -25,7 +25,7 @@ class CountriesCellView: UICollectionViewCell {
     }()
     private let countryCellID = "countryCell"
     
-    let countries = ["Angola"]
+    let countries = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "C.A.R", "Cameroon", "Cape Verde", "Chad", "Comoros", "Congo", "D.R.C", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Ghana", "Guinea-Bissau", "Guinea", "Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "Sudan", "Tanzania", "The Gambia", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,17 +46,19 @@ class CountriesCellView: UICollectionViewCell {
         collectionView.delegate = self
         
         collectionView.register(CountryCell.self, forCellWithReuseIdentifier: countryCellID)
+        collectionView.allowsMultipleSelection = true
     }
 }
 
 // MARK:- Datasource
 extension CountriesCellView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        54
+        countries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: countryCellID, for: indexPath) as! CountryCell
+        cell.updateCell(with: countries[indexPath.row])
         return cell
     }
     
@@ -72,5 +74,17 @@ extension CountriesCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
+        if cell.isSelected == true {
+            cell.viewToDim.isHidden = false
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
+        cell.viewToDim.isHidden = true
     }
 }
