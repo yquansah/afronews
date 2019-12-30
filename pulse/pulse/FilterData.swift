@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct FilterData {
+class FilterData {
     var itemName: String
     var selectedState: Bool = false
+    
+    init(itemName: String) {
+        self.itemName = itemName
+    }
 }

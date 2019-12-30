@@ -52,7 +52,6 @@ class TopicCellView: UICollectionViewCell {
         
         // setu array
         topics.forEach{finalData.append(FilterData(itemName: $0))}
-        finalData[2].selectedState = true
     }
 }
 

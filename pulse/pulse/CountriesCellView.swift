@@ -26,6 +26,8 @@ class CountriesCellView: UICollectionViewCell {
     private let countryCellID = "countryCell"
     
     let countries = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "C.A.R", "Cameroon", "Cape Verde", "Chad", "Comoros", "Congo", "D.R.C", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Ghana", "Guinea-Bissau", "Guinea", "Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "Sudan", "Tanzania", "The Gambia", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"]
+    
+    var finalData = [FilterData]()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,18 +49,26 @@ class CountriesCellView: UICollectionViewCell {
         
         collectionView.register(CountryCell.self, forCellWithReuseIdentifier: countryCellID)
         collectionView.allowsMultipleSelection = true
+        
+        // setu array
+        countries.forEach{finalData.append(FilterData(itemName: $0))}
     }
 }
 
 // MARK:- Datasource
 extension CountriesCellView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        countries.count
+        finalData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: countryCellID, for: indexPath) as! CountryCell
-        cell.updateCell(with: countries[indexPath.row])
+        cell.updateCell(with: finalData[indexPath.row])
+        
+        if finalData[indexPath.row].selectedState {
+//            cell.isSelected = false
+            cell.viewToDim.isHidden = false
+        }
         return cell
     }
     
@@ -78,13 +88,16 @@ extension CountriesCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
-        if cell.isSelected == true {
-            cell.viewToDim.isHidden = false
-        }
+        
+        finalData[indexPath.row].selectedState = !finalData[indexPath.row].selectedState
+        cell.viewToDim.isHidden = finalData[indexPath.row].selectedState ? false : true
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
-        cell.viewToDim.isHidden = true
+        
+        finalData[indexPath.row].selectedState = !finalData[indexPath.row].selectedState
+        cell.viewToDim.isHidden = finalData[indexPath.row].selectedState ? false : true
+        
     }
 }

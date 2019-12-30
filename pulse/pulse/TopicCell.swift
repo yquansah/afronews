@@ -61,4 +61,10 @@ class TopicCell: UICollectionViewCell {
         imageView.image = UIImage(named: name.itemName)
         nameLabel.text = name.itemName
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewToDim.isHidden = true
+    }
+
 }

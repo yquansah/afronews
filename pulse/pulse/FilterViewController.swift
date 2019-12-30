@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DonePressed {
+    func dataFromFilter(topic: [String], countries: [String])
+}
+
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     /*
@@ -17,6 +21,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     private let topicCellViewID = "topicViewCell"
     private let countryCellViewID = "countryCellView"
     private let headerCellID = "headerCell"
+    
+    var delegate: DonePressed?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,30 +56,18 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     private func clearAll() {
         for path in collectionView.indexPathsForVisibleItems {
-            
             if path.section == 0 {
                 let firstCell = collectionView.cellForItem(at: path) as! TopicCellView
-                firstCell.collectionView.indexPathsForSelectedItems?.forEach { selectedPaths in
-                    
-                    let cell = firstCell.collectionView.cellForItem(at: selectedPaths) as! TopicCell
-                    cell.viewToDim.isHidden = true
-                }
+                firstCell.finalData.forEach {$0.selectedState = false}
+                firstCell.collectionView.reloadData()
             }
-            else {
-                if let secondCell = collectionView.cellForItem(at: path) as? CountriesCellView {
-                    
-                    secondCell.collectionView.indexPathsForSelectedItems?.forEach { selectedPaths in
-                        if let cell = secondCell.collectionView.cellForItem(at: selectedPaths) as? CountryCell {
-                            cell.viewToDim.isHidden = true
-                        }
-                    }
-                }
-                
-                
+            else if path.section == 1 {
+                let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
+                secondCell.finalData.forEach {$0.selectedState = false}
+                secondCell.collectionView.reloadData()
             }
         }
         
-        // Empty array of selected items here
     }
     
     //MARK:- Obc Functions
@@ -82,6 +76,29 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     @objc private func doneButton() {
+        
+        var topics = [String]()
+        var countries = [String]()
+        
+        for path in collectionView.indexPathsForVisibleItems {
+            if path.section == 0 {
+                let firstCell = collectionView.cellForItem(at: path) as! TopicCellView
+                firstCell.finalData.forEach {item in
+                    if item.selectedState {
+                        topics.append(item.itemName)
+                    }
+                }
+            }
+            else if path.section == 1 {
+                let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
+                secondCell.finalData.forEach {item in
+                    if item.selectedState {
+                        countries.append(item.itemName)
+                    }
+                }
+            }
+        }
+        delegate?.dataFromFilter(topic: topics, countries: countries)
         self.dismiss(animated: false, completion: nil)
     }
     

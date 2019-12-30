@@ -58,8 +58,13 @@ class CountryCell: UICollectionViewCell {
         nameLabel.frame = CGRect(x: 0, y: imageHeight, width: frame.width, height: labelHeight)
     }
     
-    func updateCell(with name: String) {
-        imageView.image = UIImage(named: name)
-        nameLabel.text = name
+    func updateCell(with name: FilterData) {
+        imageView.image = UIImage(named: name.itemName)
+        nameLabel.text = name.itemName
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewToDim.isHidden = true
     }
 }
