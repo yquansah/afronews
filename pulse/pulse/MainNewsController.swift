@@ -50,10 +50,23 @@ class MainNewsController: UITableViewController {
         }
         tableView.reloadData()
     }
+    
+    // MARK:- Filter Button
+    @IBAction func filterButton(_ sender: UIBarButtonItem) {
+        // Present the filter view controller on a navigation controller
+        let layout = UICollectionViewFlowLayout()
+        let filterView = FilterViewController(collectionViewLayout: layout)
+        let navCon = UINavigationController(rootViewController: filterView)
+        navCon.modalPresentationStyle = .fullScreen
+        self.present(navCon, animated: true, completion: nil)
+        
+    }
 }
 
-extension MainNewsController {
 
+extension MainNewsController {
+    
+    // MARK:- Datasource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mainArticles.allArticles.count
     }
@@ -101,10 +114,10 @@ extension MainNewsController {
     }
 
     func saveFilter() {
-//Pending Filter functionality
+        //Pending Filter functionality
     }
 
     func loadFilter() {
-//Pending Filter functionality
+        //Pending Filter functionality
     }
 }
