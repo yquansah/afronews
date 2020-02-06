@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class NewsMainCell: UITableViewCell {
 
@@ -21,22 +22,7 @@ class NewsMainCell: UITableViewCell {
         mainDescription.text = article.description
         country.text = article.country ?? "Ghana"
         if let url = URL(string: article.imageURL) {
-         mainImage.load(url: url)
-        }
-    }
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        print(url)
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
+            Nuke.loadImage(with: url, into: mainImage)
         }
     }
 }
