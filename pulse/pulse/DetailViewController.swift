@@ -38,12 +38,12 @@ class DetailViewController: UIViewController {
 
     }
 
-
     @IBAction func shareButton(_ sender: UIButton) {
-        let shareText = "Check this out"
-        let objectsToShare = [shareText]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare , applicationActivities: nil)
-        present(activityVC,animated: true)
+        let shareText = "Check this news article out, from Pulse."
+        let shareLink = link
+        let objectsToShare = [shareText, shareLink]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        present(activityVC, animated: true)
     }
 
     @IBAction func saveButton(_ sender: UIButton) {
