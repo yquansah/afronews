@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-
 class API {
     private let apiKey: String!
     private let endpoints: [String]!
