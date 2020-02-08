@@ -6,6 +6,7 @@ target 'pulse' do
   use_frameworks!
 
   # Pods for pulse
-  pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'Nuke', '~> 7.5.2'
+  pod 'SwiftyJSON'
 end
