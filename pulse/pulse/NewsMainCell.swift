@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class NewsMainCell: UITableViewCell {
 
@@ -20,7 +21,8 @@ class NewsMainCell: UITableViewCell {
         author.text = article.author ?? "No Author"
         mainDescription.text = article.description
         country.text = article.country ?? "Ghana"
-//        mainImage.image = UIImage(
+        if let url = URL(string: article.imageURL) {
+            Nuke.loadImage(with: url, into: mainImage)
+        }
     }
-    
 }
