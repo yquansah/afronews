@@ -25,7 +25,7 @@ class CountriesCellView: UICollectionViewCell {
     }()
     private let countryCellID = "countryCell"
     
-    let countries = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "C.A.R", "Cameroon", "Cape Verde", "Chad", "Comoros", "Congo", "D.R.C", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Ghana", "Guinea-Bissau", "Guinea", "Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "Sudan", "Tanzania", "The Gambia", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"]
+//    let countries = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "C.A.R", "Cameroon", "Cape Verde", "Chad", "Comoros", "Congo", "D.R.C", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Ghana", "Guinea-Bissau", "Guinea", "Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "Sudan", "Tanzania", "The Gambia", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"]
     
     var finalData = [FilterData]()
 
@@ -50,8 +50,14 @@ class CountriesCellView: UICollectionViewCell {
         collectionView.register(CountryCell.self, forCellWithReuseIdentifier: countryCellID)
         collectionView.allowsMultipleSelection = true
         
-        // setu array
-        countries.forEach{finalData.append(FilterData(itemName: $0))}
+        // setup array
+        if let countriesPath = Bundle.main.path(forResource: "countries", ofType: ".txt") {
+            if let countriesFileContents = try? String(contentsOfFile: countriesPath) {
+                let countries = countriesFileContents.components(separatedBy: ", ")
+                countries.forEach {finalData.append(FilterData(itemName: $0))}
+            }
+        }
+
     }
 }
 

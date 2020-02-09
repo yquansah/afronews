@@ -87,12 +87,13 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
         detailVC.mainDes = mainArticles.allArticles[indexPath.row].description
         detailVC.link = mainArticles.allArticles[indexPath.row].url
+        detailVC.image = mainArticles.allArticles[indexPath.row].imageURL
         
         //Style A
         detailVC.providesPresentationContextTransitionStyle = true
         detailVC.definesPresentationContext = true
         detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        detailVC.view.backgroundColor = UIColor.init(white: 0.5, alpha: 0.85)
+        detailVC.view.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
         
         self.view.addSubview(detailVC.view)
         self.addChild(detailVC)
