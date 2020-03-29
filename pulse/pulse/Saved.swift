@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Saved {
-    //var savedArticles: [Article]
+class Saved: Object {
+     let savedArticles = List<SavedArticle>()
 
 }

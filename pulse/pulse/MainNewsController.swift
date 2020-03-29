@@ -9,14 +9,16 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class MainNewsController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
     
     // Define variables
+    let realm = try! Realm()
     private var mainArticles = ArticleStore()
-    private var savedArticles = ArticleStore()
+    private var savedArticle = SavedArticle()
     private var api: API!
     
     override func viewDidLoad() {
@@ -30,7 +32,7 @@ class MainNewsController: UIViewController {
     }
     
     func populateRequest() {
-        var params: [String: Any] = ["q": "Ghana", "sortBy": "publishedAt", "pageSize": 10]
+        var params: [String: Any] = ["q": "Ghana", "sortBy": "publishedAt", "pageSize": 25]
         api.makeRequest(index: 0, params: &params) { response in
             let data = JSON(response)
             self.parse(json: data)
@@ -50,6 +52,7 @@ class MainNewsController: UIViewController {
             newArticle.publishedAt = result["publishedAt"].stringValue
             
             mainArticles.allArticles.append(newArticle)
+            saveSelectedArticles(article: newArticle)
         }
         tableview.reloadData()
     }
@@ -114,38 +117,56 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Persistency functions
     
-    func saveSelectedArticles() {
-        
-        let jsonEncoder = JSONEncoder()
-        
-        if let data = try? jsonEncoder.encode(savedArticles) {
-            
-            let defaults = UserDefaults.standard
-            defaults.set(data, forKey: "SelectedArticles")
+    func saveSelectedArticles(article: Article) {
+        let newArticle = SavedArticle()
+        newArticle.author = article.author
+        newArticle.content = article.content
+        newArticle.desc = article.description
+        newArticle.imageURL = article.imageURL
+        newArticle.publishedAt = article.publishedAt
+        newArticle.title = article.title
+        newArticle.url = article.url
+    
+        do{
+            try realm.write {
+                realm.add(newArticle)
+            }
+        } catch {
+            print("Unable to write to realm db, \(error)")
         }
+        
+        
+        
+//        let jsonEncoder = JSONEncoder()
+//
+//        if let data = try? jsonEncoder.encode(savedArticles) {
+//
+//            let defaults = UserDefaults.standard
+//            defaults.set(data, forKey: "SelectedArticles")
+//        }
         
     }
     
-    func loadSelectedArticles() {
-        
-        let defaults = UserDefaults.standard
-        if let data = defaults.object(forKey: "SelectedArticles") as? Data {
-            
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                
-                savedArticles = try jsonDecoder.decode(ArticleStore.self, from: data)
-                
-            } catch {
-                
-                let ac = UIAlertController(title: "Load error", message: "Cound not load articles.", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                present(ac, animated: true)
-            }
-        }
-        
-    }
+//    func loadSelectedArticles() {
+//
+//        let defaults = UserDefaults.standard
+//        if let data = defaults.object(forKey: "SelectedArticles") as? Data {
+//
+//            let jsonDecoder = JSONDecoder()
+//
+//            do {
+//
+//                savedArticles = try jsonDecoder.decode(ArticleStore.self, from: data)
+//
+//            } catch {
+//
+//                let ac = UIAlertController(title: "Load error", message: "Cound not load articles.", preferredStyle: .alert)
+//                ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//                present(ac, animated: true)
+//            }
+//        }
+//
+//    }
     
     func saveFilter() {
         //Pending Filter functionality

@@ -9,4 +9,5 @@ target 'pulse' do
   pod 'Alamofire'
   pod 'Nuke', '~> 7.5.2'
   pod 'SwiftyJSON'
+  pod 'RealmSwift'
 end
