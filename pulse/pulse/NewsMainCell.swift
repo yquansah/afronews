@@ -25,4 +25,13 @@ class NewsMainCell: UITableViewCell {
             Nuke.loadImage(with: url, into: mainImage)
         }
     }
+    
+    func updateCell(with savedArticle: SavedArticle) {
+        author.text = savedArticle.author ?? "No Author"
+        mainDescription.text = savedArticle.desc
+        country.text = "Ghana"
+        if let url = URL(string: savedArticle.imageURL) {
+            Nuke.loadImage(with: url, into: mainImage)
+        }
+    }
 }

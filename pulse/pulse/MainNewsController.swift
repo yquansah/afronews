@@ -13,6 +13,8 @@ import RealmSwift
 
 class MainNewsController: UIViewController {
     
+    
+    
     @IBOutlet weak var tableview: UITableView!
     
     // Define variables
@@ -52,7 +54,7 @@ class MainNewsController: UIViewController {
             newArticle.publishedAt = result["publishedAt"].stringValue
             
             mainArticles.allArticles.append(newArticle)
-            saveSelectedArticles(article: newArticle)
+            //saveSelectedArticles(article: newArticle)
         }
         tableview.reloadData()
     }
@@ -96,7 +98,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         detailVC.providesPresentationContextTransitionStyle = true
         detailVC.definesPresentationContext = true
         detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        detailVC.view.backgroundColor = UIColor.init(white: 1, alpha: 0.9)
+        detailVC.view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
         
         self.view.addSubview(detailVC.view)
         self.addChild(detailVC)
@@ -120,10 +122,10 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     func saveSelectedArticles(article: Article) {
         let newArticle = SavedArticle()
         newArticle.author = article.author
-        newArticle.content = article.content
+       // newArticle.content = article.content
         newArticle.desc = article.description
         newArticle.imageURL = article.imageURL
-        newArticle.publishedAt = article.publishedAt
+      //  newArticle.publishedAt = article.publishedAt
         newArticle.title = article.title
         newArticle.url = article.url
     

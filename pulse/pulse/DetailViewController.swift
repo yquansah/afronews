@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 import Nuke
 
 class DetailViewController: UIViewController {
-
+    
+    let realm = try! Realm()
     var image: String = ""
     var givenTitle: String = ""
     var mainDes: String = ""
@@ -29,7 +31,6 @@ class DetailViewController: UIViewController {
         if let url = URL(string: image) {
             Nuke.loadImage(with: url, into: mainImage)
         }
-
     }
 
     @IBAction func redirToSourceButton(_ sender: UIButton) {
@@ -51,7 +52,23 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func saveButton(_ sender: UIButton) {
-
+        let newArticle = SavedArticle()
+            newArticle.author = auth
+       //     newArticle.content = article.content
+            newArticle.desc = mainDes
+            newArticle.imageURL = image
+       //     newArticle.publishedAt = article.publishedAt
+            newArticle.title = givenTitle
+            newArticle.url = link
+        
+            do{
+                try realm.write {
+                    realm.add(newArticle)
+                }
+            } catch {
+                print("Unable to write to realm db, \(error)")
+            }
+            
     }
 
 }
