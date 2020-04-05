@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class DetailViewController: UIViewController {
 
@@ -25,6 +26,9 @@ class DetailViewController: UIViewController {
         mainTitle.text = givenTitle
         mainDescription.text = mainDes
         author.text = auth
+        if let url = URL(string: image) {
+            Nuke.loadImage(with: url, into: mainImage)
+        }
 
     }
 
