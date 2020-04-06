@@ -20,7 +20,7 @@ class NewsMainCell: UITableViewCell {
     func updateCell(with article: Article) {
         author.text = article.author ?? "No Author"
         mainDescription.text = article.description
-        country.text = article.country ?? "Ghana"
+        country.text = article.country ?? "Unknown"
         if let url = URL(string: article.imageURL) {
             Nuke.loadImage(with: url, into: mainImage)
         }
