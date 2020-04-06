@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import RealmSwift
 
-class MainNewsController: UIViewController {
+class MainNewsController: UIViewController, DonePressed {
     
     
     
@@ -27,22 +27,24 @@ class MainNewsController: UIViewController {
         super.viewDidLoad()
         
         api = API()
-        populateRequest()
         tableview.delegate = self
         tableview.dataSource = self
-        
     }
     
-    func populateRequest() {
-        var params: [String: Any] = ["q": "Ghana", "sortBy": "publishedAt", "pageSize": 25]
-        api.makeRequest(index: 0, params: &params) { response in
+    private func constructQueryParams(countries: String, topics: String) -> [String: Any] {
+        let countriesAndTopics = countries + " " + topics
+        return ["q": countriesAndTopics, "sortBy": "publishedAt", "pageSize": 25]
+    }
+    
+    public func populateRequest(queryParams: inout [String: Any]) {
+        api.makeRequest(index: 0, params: &queryParams) { response in
             let data = JSON(response)
             self.parse(json: data)
         }
     }
     
     func parse(json: JSON) {
-        
+        var articles = [Article]()
         for result in json["articles"].arrayValue {
             let newArticle = Article()
             newArticle.title = result["title"].stringValue
@@ -53,10 +55,16 @@ class MainNewsController: UIViewController {
             newArticle.imageURL = result["urlToImage"].stringValue
             newArticle.publishedAt = result["publishedAt"].stringValue
             
-            mainArticles.allArticles.append(newArticle)
-            //saveSelectedArticles(article: newArticle)
+            articles.append(newArticle)
         }
+
+        mainArticles.allArticles = articles
         tableview.reloadData()
+    }
+    
+    func dataFromFilter(topics: String, countries: String) {
+        var queryParams = constructQueryParams(countries: countries, topics: topics)
+        populateRequest(queryParams: &queryParams)
     }
     
     // MARK:- Filter Button
@@ -64,6 +72,8 @@ class MainNewsController: UIViewController {
         // Present the filter view controller on a navigation controller
         let layout = UICollectionViewFlowLayout()
         let filterView = FilterViewController(collectionViewLayout: layout)
+        filterView.delegate = self
+
         let navCon = UINavigationController(rootViewController: filterView)
         navCon.modalPresentationStyle = .fullScreen
         self.present(navCon, animated: true, completion: nil)

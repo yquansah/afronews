@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DonePressed {
-    func dataFromFilter(topic: [String], countries: [String])
+    func dataFromFilter(topics: String, countries: String)
 }
 
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -26,9 +26,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
-        
     }
     
     private func setupView() {
@@ -70,7 +69,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         
     }
     
-    //MARK:- Obc Functions
+    // MARK:- Obc Functions
     @objc private func clearButton() {
         clearAll()
     }
@@ -98,7 +97,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
-        delegate?.dataFromFilter(topic: topics, countries: countries)
+        
+        delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
         self.dismiss(animated: false, completion: nil)
     }
     
