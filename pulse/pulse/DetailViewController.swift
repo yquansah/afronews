@@ -10,6 +10,10 @@ import UIKit
 import RealmSwift
 import Nuke
 
+protocol ReadyToDismiss {
+    func removeDim()
+}
+
 class DetailViewController: UIViewController {
     
     let realm = try! Realm()
@@ -18,6 +22,7 @@ class DetailViewController: UIViewController {
     var mainDes: String = ""
     var auth: String = ""
     var link: String = ""
+    var delegate: ReadyToDismiss?
 
     @IBOutlet private weak var mainImage: UIImageView!
     @IBOutlet private weak var mainTitle: UILabel!
@@ -40,7 +45,8 @@ class DetailViewController: UIViewController {
     }
     @IBAction func dismissView(_ sender: UIButton) {
         self.remove()
-
+        // Alert parent so the dimmed background is removed
+        delegate?.removeDim()
     }
 
     @IBAction func shareButton(_ sender: UIButton) {
@@ -61,7 +67,7 @@ class DetailViewController: UIViewController {
             newArticle.title = givenTitle
             newArticle.url = link
         
-            do{
+            do {
                 try realm.write {
                     realm.add(newArticle)
                 }

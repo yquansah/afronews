@@ -14,21 +14,33 @@ import RealmSwift
 class MainNewsController: UIViewController, DonePressed {
     
     
-    
     @IBOutlet weak var tableview: UITableView!
     
-    // Define variables
+    // MARK: - Define variables
     let realm = try! Realm()
     private var mainArticles = ArticleStore()
     private var savedArticle = SavedArticle()
     private var api: API!
     
+    lazy var viewToDim: UIView = {
+        let uiView = UIView()
+        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        uiView.isHidden = true
+        
+        return uiView
+    }()
+    
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         api = API()
         tableview.delegate = self
         tableview.dataSource = self
+        
+        // Dimming
+        view.addSubview(viewToDim)
+        viewToDim.frame = view.frame
     }
     
     private func constructQueryParams(countries: String, topics: String) -> [String: Any] {
@@ -67,7 +79,7 @@ class MainNewsController: UIViewController, DonePressed {
         populateRequest(queryParams: &queryParams)
     }
     
-    // MARK:- Filter Button
+    // MARK: - Filter Button
     @IBAction func filterButton(_ sender: UIBarButtonItem) {
         // Present the filter view controller on a navigation controller
         let layout = UICollectionViewFlowLayout()
@@ -98,22 +110,32 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
         //detailVC.updateDetailView(with: mainArticles.allArticles[indexPath.row])
+        detailVC.delegate = self
         detailVC.auth = mainArticles.allArticles[indexPath.row].author!
         detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
         detailVC.mainDes = mainArticles.allArticles[indexPath.row].description
         detailVC.link = mainArticles.allArticles[indexPath.row].url
         detailVC.image = mainArticles.allArticles[indexPath.row].imageURL
         
+        self.add(detailVC)
+        
+        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+        detailVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        detailVC.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        detailVC.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
+        detailVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
+//        detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
+        viewToDim.isHidden = false
         //Style A
-        detailVC.providesPresentationContextTransitionStyle = true
-        detailVC.definesPresentationContext = true
-        detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        detailVC.view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
-        
-        self.view.addSubview(detailVC.view)
-        self.addChild(detailVC)
-        detailVC.didMove(toParent: self)
-        
+//        detailVC.providesPresentationContextTransitionStyle = true
+//        detailVC.definesPresentationContext = true
+//        detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        detailVC.view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
+//
+//        self.view.addSubview(detailVC.view)
+//        self.addChild(detailVC)
+//        detailVC.didMove(toParent: self)
+//
         detailVC.updateDetailView()
         //  detailVC.view.frame = CGRect(x: 20, y: 20, width: 370, height: 700) // Needed with style A
         
@@ -207,4 +229,11 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
+}
+
+extension MainNewsController: ReadyToDismiss {
+    func removeDim() {
+        viewToDim.isHidden = true
+    }
+    
 }
