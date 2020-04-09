@@ -11,17 +11,14 @@ import Alamofire
 import SwiftyJSON
 
 class API {
-    private let apiKey: String!
-    private let endpoints: [String]!
+    private let endpoint: String!
     
     init() {
-        self.endpoints = ["https://newsapi.org/v2/everything", "https://newsapi.org/v2/top-headlines"]
-        self.apiKey = "dd73f84f90d342c8ba07f4c6ec2e063e"
+        self.endpoint = "https://polar-sea-76936.herokuapp.com/api/everything"
     }
     
     func makeRequest(index: Int, params: inout [String: Any], completion: @escaping (Any) -> Void) {
-        params["apiKey"] = self.apiKey
-        Alamofire.request(self.endpoints[index], method: .get, parameters: params).responseJSON { response in
+        Alamofire.request(self.endpoint, method: .get, parameters: params).responseJSON { response in
             if response.result.isSuccess {
                 let newsResp = response.result.value!
                 completion(newsResp)
