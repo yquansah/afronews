@@ -38,6 +38,12 @@ class MainNewsController: UIViewController, DonePressed {
         tableview.delegate = self
         tableview.dataSource = self
         
+        //Load saved filter if available.
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil  {
+            loadFilter()
+        }
+        
         // Dimming
         view.addSubview(viewToDim)
         viewToDim.frame = view.frame
@@ -72,10 +78,12 @@ class MainNewsController: UIViewController, DonePressed {
         mainArticles.allArticles = articles
         tableview.reloadData()
     }
-    
+    // Mark: - Done pressed delegate function
     func dataFromFilter(topics: String, countries: String) {
         var queryParams = constructQueryParams(countries: countries, topics: topics)
         populateRequest(queryParams: &queryParams)
+        
+        saveFilter(topics: topics, countries: countries)
     }
     
     // MARK: - Filter Button
@@ -123,28 +131,9 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         detailVC.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         detailVC.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
         detailVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
-//        detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
         viewToDim.isHidden = false
-        //Style A
-//        detailVC.providesPresentationContextTransitionStyle = true
-//        detailVC.definesPresentationContext = true
-//        detailVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        detailVC.view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
-//
-//        self.view.addSubview(detailVC.view)
-//        self.addChild(detailVC)
-//        detailVC.didMove(toParent: self)
-//
+
         detailVC.updateDetailView()
-        //  detailVC.view.frame = CGRect(x: 20, y: 20, width: 370, height: 700) // Needed with style A
-        
-        //Style B
-        //        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
-        //        detailVC.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        //        detailVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-        //        detailVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
-        //        detailVC.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.92).isActive = true
-        //        detailVC.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.92).isActive = true
         
     }
     
@@ -168,45 +157,26 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
             print("Unable to write to realm db, \(error)")
         }
         
-        
-        
-//        let jsonEncoder = JSONEncoder()
-//
-//        if let data = try? jsonEncoder.encode(savedArticles) {
-//
-//            let defaults = UserDefaults.standard
-//            defaults.set(data, forKey: "SelectedArticles")
-//        }
-        
     }
     
-//    func loadSelectedArticles() {
-//
-//        let defaults = UserDefaults.standard
-//        if let data = defaults.object(forKey: "SelectedArticles") as? Data {
-//
-//            let jsonDecoder = JSONDecoder()
-//
-//            do {
-//
-//                savedArticles = try jsonDecoder.decode(ArticleStore.self, from: data)
-//
-//            } catch {
-//
-//                let ac = UIAlertController(title: "Load error", message: "Cound not load articles.", preferredStyle: .alert)
-//                ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//                present(ac, animated: true)
-//            }
-//        }
-//
-//    }
     
-    func saveFilter() {
-        //Pending Filter functionality
+    func saveFilter(topics: String, countries: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(topics, forKey: "topics")
+        defaults.set(countries, forKey: "countries")
+        defaults.set(true, forKey: "filterSet")
+        
     }
     
     func loadFilter() {
-        //Pending Filter functionality
+        let defaults = UserDefaults.standard
+        
+        let topics = defaults.object(forKey: "topics") as! String
+        let countries = defaults.object(forKey: "countries") as! String
+        
+        var queryParams = constructQueryParams(countries: countries, topics: topics)
+        populateRequest(queryParams: &queryParams)
+        
     }
 }
 
