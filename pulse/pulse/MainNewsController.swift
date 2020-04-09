@@ -44,8 +44,7 @@ class MainNewsController: UIViewController, DonePressed {
     }
     
     private func constructQueryParams(countries: String, topics: String) -> [String: Any] {
-        let countriesAndTopics = countries + " " + topics
-        return ["q": countriesAndTopics, "sortBy": "publishedAt", "pageSize": 25]
+        return ["countries": countries, "topics": topics]
     }
     
     public func populateRequest(queryParams: inout [String: Any]) {
