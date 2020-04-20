@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jHv-jp-SOP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jHv-jp-SOP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,55 +189,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="obama" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-Fd-H2o">
-                                <rect key="frame" x="0.0" y="44" width="414" height="250"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Ac-j9-jwU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="844"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="obama" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-Fd-H2o">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="309"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Bmm-Fd-H2o" secondAttribute="height" multiplier="138:103" id="nCM-uL-xDi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7S-HT-WZs">
+                                        <rect key="frame" x="8" y="317" width="398" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="s15-OG-PS7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="It's Time Africa Had Its Own Harvard. Inside a University Training African Leaders to Solve African Problems." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYP-dm-hZk">
+                                        <rect key="frame" x="12" y="365" width="390" height="79"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck2-th-dsg">
+                                        <rect key="frame" x="8" y="452" width="398" height="347.5"/>
+                                        <string key="text">The African Leadership University on the Indian Ocean isnand of Mauritius looks much like any other cllege campus. Except, perhaps, when it compes to the libray. Here you will find no silent temple to books and knowledge; in fact, the university's library has no books at all.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8S-1C-j9Y">
+                                        <rect key="frame" x="142" y="807.5" width="130" height="36.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="HRy-66-p0g"/>
+                                            <constraint firstAttribute="height" constant="36.5" id="vvL-Oy-LDD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Read on Site">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redirToSourceButton:" destination="71h-ja-ce3" eventType="touchUpInside" id="e63-pA-df9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="zMW-lG-G0k"/>
+                                    <constraint firstAttribute="bottom" secondItem="J8S-1C-j9Y" secondAttribute="bottom" id="7sF-kH-a6k"/>
+                                    <constraint firstItem="P7S-HT-WZs" firstAttribute="leading" secondItem="0Ac-j9-jwU" secondAttribute="leading" constant="8" id="CTR-jg-cm8"/>
+                                    <constraint firstAttribute="trailing" secondItem="oYP-dm-hZk" secondAttribute="trailing" constant="12" id="D52-FK-sSy"/>
+                                    <constraint firstItem="Bmm-Fd-H2o" firstAttribute="leading" secondItem="0Ac-j9-jwU" secondAttribute="leading" id="Svv-we-UXt"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bmm-Fd-H2o" secondAttribute="trailing" id="Zl6-Qc-d6y"/>
+                                    <constraint firstAttribute="trailing" secondItem="ck2-th-dsg" secondAttribute="trailing" constant="8" id="d5v-nQ-s66"/>
+                                    <constraint firstItem="oYP-dm-hZk" firstAttribute="leading" secondItem="0Ac-j9-jwU" secondAttribute="leading" constant="12" id="dgt-Pt-iHD"/>
+                                    <constraint firstAttribute="trailing" secondItem="P7S-HT-WZs" secondAttribute="trailing" constant="8" id="hAg-90-60i"/>
+                                    <constraint firstItem="ck2-th-dsg" firstAttribute="leading" secondItem="0Ac-j9-jwU" secondAttribute="leading" constant="8" id="lwQ-47-Z9P"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7S-HT-WZs">
-                                <rect key="frame" x="24" y="310" width="366" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="EJo-Wo-yqh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="It's Time Africa Had Its Own Harvard. Inside a University Training African Leaders to Solve African Problems." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYP-dm-hZk">
-                                <rect key="frame" x="8" y="362" width="398" height="79"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck2-th-dsg">
-                                <rect key="frame" x="8" y="449" width="398" height="143.5"/>
-                                <string key="text">The African Leadership University on the Indian Ocean isnand of Mauritius looks much like any other cllege campus. Except, perhaps, when it compes to the libray. Here you will find no silent temple to books and knowledge; in fact, the university's library has no books at all.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8S-1C-j9Y">
-                                <rect key="frame" x="132" y="806" width="150" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Yqv-p3-5hg"/>
-                                    <constraint firstAttribute="width" constant="150" id="aJg-nb-Ofq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Read on Site">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="redirToSourceButton:" destination="71h-ja-ce3" eventType="touchUpInside" id="e63-pA-df9"/>
-                                </connections>
-                            </button>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4i-UH-r6K">
                                 <rect key="frame" x="8" y="52" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="1f7-aX-Aab"/>
-                                    <constraint firstAttribute="height" constant="40" id="CLN-t5-eqR"/>
+                                    <constraint firstAttribute="height" constant="40" id="4Wr-m8-gDF"/>
+                                    <constraint firstAttribute="width" constant="40" id="fGK-M2-ohe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -251,8 +267,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEb-vU-e9X">
                                 <rect key="frame" x="366" y="52" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="WQg-BA-PsK"/>
-                                    <constraint firstAttribute="width" constant="40" id="iOm-29-pCK"/>
+                                    <constraint firstAttribute="height" constant="40" id="dxH-ux-ibt"/>
+                                    <constraint firstAttribute="width" constant="40" id="mnV-zw-hE7"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="square.and.arrow.up" catalog="system">
@@ -265,8 +281,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSu-LZ-Kzv">
                                 <rect key="frame" x="318" y="52" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Dev-fV-9xU"/>
-                                    <constraint firstAttribute="height" constant="40" id="zGZ-6B-EoW"/>
+                                    <constraint firstAttribute="width" constant="40" id="4vn-oL-5jg"/>
+                                    <constraint firstAttribute="height" constant="40" id="KY0-2Z-7Pi"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="bookmark" catalog="system"/>
@@ -277,27 +293,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="J8S-1C-j9Y" firstAttribute="centerX" secondItem="5QX-Iw-Pgt" secondAttribute="centerX" id="8Jj-42-Rgt"/>
-                            <constraint firstItem="L4i-UH-r6K" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" constant="8" id="B7e-2e-fe4"/>
-                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="trailing" secondItem="P7S-HT-WZs" secondAttribute="trailing" constant="24" id="C8K-F8-vLM"/>
-                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="trailing" secondItem="kEb-vU-e9X" secondAttribute="trailing" constant="8" id="Kzr-O0-YO1"/>
-                            <constraint firstItem="Bmm-Fd-H2o" firstAttribute="trailing" secondItem="IFf-Tn-jsE" secondAttribute="trailing" id="Lgt-bm-7ui"/>
-                            <constraint firstItem="Bmm-Fd-H2o" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" id="O6l-yd-1KU"/>
-                            <constraint firstItem="Bmm-Fd-H2o" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" id="P1U-fB-v9x"/>
-                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="trailing" secondItem="oYP-dm-hZk" secondAttribute="trailing" constant="8" id="QYD-ga-EA2"/>
-                            <constraint firstItem="QSu-LZ-Kzv" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="UjR-67-yfw"/>
-                            <constraint firstItem="ck2-th-dsg" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" constant="8" id="aLS-yT-Qpm"/>
-                            <constraint firstItem="ck2-th-dsg" firstAttribute="top" secondItem="oYP-dm-hZk" secondAttribute="bottom" constant="8" id="dma-U2-gxo"/>
-                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="bottom" secondItem="J8S-1C-j9Y" secondAttribute="bottom" constant="16" id="eL7-cf-y8s"/>
-                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="trailing" secondItem="ck2-th-dsg" secondAttribute="trailing" constant="8" id="fGV-47-eig"/>
-                            <constraint firstItem="P7S-HT-WZs" firstAttribute="top" secondItem="Bmm-Fd-H2o" secondAttribute="bottom" constant="16" id="fn5-8g-scY"/>
-                            <constraint firstItem="kEb-vU-e9X" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="gql-3P-kcG"/>
-                            <constraint firstItem="kEb-vU-e9X" firstAttribute="leading" secondItem="QSu-LZ-Kzv" secondAttribute="trailing" constant="8" id="hCD-Bz-IKe"/>
-                            <constraint firstItem="L4i-UH-r6K" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="qGp-Md-YwF"/>
-                            <constraint firstItem="ck2-th-dsg" firstAttribute="top" secondItem="oYP-dm-hZk" secondAttribute="bottom" constant="8" id="qWQ-uC-42w"/>
-                            <constraint firstItem="oYP-dm-hZk" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" constant="8" id="qyG-Ij-ZkJ"/>
-                            <constraint firstItem="oYP-dm-hZk" firstAttribute="top" secondItem="P7S-HT-WZs" secondAttribute="bottom" constant="12" id="xSj-RV-L4y"/>
-                            <constraint firstItem="P7S-HT-WZs" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" constant="24" id="yve-gH-MKS"/>
+                            <constraint firstItem="0Ac-j9-jwU" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" id="72x-GJ-Lmz"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ac-j9-jwU" secondAttribute="trailing" id="AfH-bR-QxG"/>
+                            <constraint firstItem="kEb-vU-e9X" firstAttribute="leading" secondItem="QSu-LZ-Kzv" secondAttribute="trailing" constant="8" id="BRy-Qp-83B"/>
+                            <constraint firstItem="L4i-UH-r6K" firstAttribute="leading" secondItem="IFf-Tn-jsE" secondAttribute="leading" constant="8" id="CDk-al-Oso"/>
+                            <constraint firstItem="L4i-UH-r6K" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="QVs-xj-PwQ"/>
+                            <constraint firstItem="kEb-vU-e9X" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="dcm-Co-FxY"/>
+                            <constraint firstItem="IFf-Tn-jsE" firstAttribute="trailing" secondItem="kEb-vU-e9X" secondAttribute="trailing" constant="8" id="dzT-jD-sP2"/>
+                            <constraint firstItem="QSu-LZ-Kzv" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" constant="8" id="mJH-X0-bEZ"/>
+                            <constraint firstItem="0Ac-j9-jwU" firstAttribute="top" secondItem="IFf-Tn-jsE" secondAttribute="top" id="nZH-p7-xlr"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ac-j9-jwU" secondAttribute="bottom" constant="8" id="oTe-eY-0XV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IFf-Tn-jsE"/>
                     </view>
@@ -606,10 +611,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="56" height="64"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="feed" width="30" height="30"/>
         <image name="obama" width="960" height="640"/>
         <image name="saved" width="21" height="30"/>
-        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
