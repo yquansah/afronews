@@ -12,8 +12,7 @@ import SwiftyJSON
 import RealmSwift
 
 class MainNewsController: UIViewController, DonePressed {
-    
-    
+
     @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Define variables
@@ -40,7 +39,7 @@ class MainNewsController: UIViewController, DonePressed {
         
         //Load saved filter if available.
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil  {
+        if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil {
             loadFilter()
         }
         
@@ -78,7 +77,7 @@ class MainNewsController: UIViewController, DonePressed {
         mainArticles.allArticles = articles
         tableview.reloadData()
     }
-    // Mark: - Done pressed delegate function
+    // MARK: - Done pressed delegate function
     func dataFromFilter(topics: String, countries: String) {
         var queryParams = constructQueryParams(countries: countries, topics: topics)
         populateRequest(queryParams: &queryParams)
@@ -149,7 +148,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         newArticle.title = article.title
         newArticle.url = article.url
     
-        do{
+        do {
             try realm.write {
                 realm.add(newArticle)
             }
@@ -158,8 +157,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
-    
+
     func saveFilter(topics: String, countries: String) {
         let defaults = UserDefaults.standard
         defaults.set(topics, forKey: "topics")

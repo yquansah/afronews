@@ -59,8 +59,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 let firstCell = collectionView.cellForItem(at: path) as! TopicCellView
                 firstCell.finalData.forEach {$0.selectedState = false}
                 firstCell.collectionView.reloadData()
-            }
-            else if path.section == 1 {
+            } else if path.section == 1 {
                 let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
                 secondCell.finalData.forEach {$0.selectedState = false}
                 secondCell.collectionView.reloadData()
@@ -69,7 +68,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         
     }
     
-    // MARK:- Obc Functions
+    // MARK: - ObjC Functions
     @objc private func clearButton() {
         clearAll()
     }
@@ -87,8 +86,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                         topics.append(item.itemName)
                     }
                 }
-            }
-            else if path.section == 1 {
+            } else if path.section == 1 {
                 let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
                 secondCell.finalData.forEach {item in
                     if item.selectedState {
@@ -102,7 +100,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         self.dismiss(animated: false, completion: nil)
     }
     
-    // MARK:- Datasource
+    // MARK: - Datasource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -120,7 +118,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         return cell
     }
     
-    // MARK:- Delegate
+    // MARK: - Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let firstCellHeight = (view.frame.width/5) + 50 // the width of the topic cells (not including 16 for the edge) + 50
         let secondCellHeight = view.frame.height - firstCellHeight
@@ -142,4 +140,3 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         return header
     }
 }
-

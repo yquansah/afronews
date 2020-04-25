@@ -1,16 +1,17 @@
 disabled_rules:
 - trailing_whitespace
+- force_cast
 excluded:
 - Carthage
 - Pods
 - SwiftLint/Common/3rdPartyLib
 line_length:
-    warning: 150
+    warning: 180
     error: 200
     ignores_function_declarations: true
     ignores_comments: true
     ignores_urls: true
-force_cast: warning # implicitly. Give warning only for force casting
+# force_cast: warning # implicitly. Give warning only for force casting
 force_try:
   severity: warning
 function_body_length:
