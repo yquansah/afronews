@@ -70,6 +70,8 @@ class MainNewsController: UIViewController, DonePressed {
             newArticle.content = result["content"].stringValue
             newArticle.imageURL = result["urlToImage"].stringValue
             newArticle.publishedAt = result["publishedAt"].stringValue
+
+            print("Image URL after parsing: \(newArticle.imageURL)")
             
             articles.append(newArticle)
         }
@@ -108,6 +110,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pulseCell", for: indexPath) as! NewsMainCell
         cell.updateCell(with: mainArticles.allArticles[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -177,7 +180,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         
     }
 }
-
+// MARK: - Child view manipulation functions
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
@@ -198,9 +201,40 @@ extension UIViewController {
     }
 }
 
+// MARK: - Dismiss protocol
 extension MainNewsController: ReadyToDismiss {
     func removeDim() {
         viewToDim.isHidden = true
     }
     
+}
+
+extension MainNewsController: DidTapCellButton {
+    func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String) {
+        let newArticle = SavedArticle()
+                    newArticle.author = author
+               //     newArticle.content = article.content
+                    newArticle.desc = description
+                    newArticle.imageURL = mainImage
+               //     newArticle.publishedAt = article.publishedAt
+                    newArticle.title = title
+                    newArticle.url = url
+
+                    do {
+                        try realm.write {
+                            realm.add(newArticle)
+                        }
+                    } catch {
+                        print("Unable to write to realm db, \(error)")
+                    }
+    }
+
+    func didTapShareButton() {
+        let shareText = "Check this news article out, from Pulse."
+        let shareLink = link
+        let objectsToShare = [shareText, shareLink] as [Any]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        present(activityVC, animated: true)
+    }
+
 }

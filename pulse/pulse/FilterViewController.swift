@@ -95,9 +95,26 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
-        
-        delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-        self.dismiss(animated: false, completion: nil)
+        let defaults = UserDefaults.standard
+
+        if !topics.isEmpty || !countries.isEmpty {
+
+            defaults.set(topics.joined(separator: " "), forKey: "topics")
+            defaults.set(countries.joined(separator: " "), forKey: "countries")
+
+            delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+            self.dismiss(animated: false, completion: nil)
+            
+        } else {
+            let oldTopics = defaults.value(forKey: "topics") as! String
+            let oldCountries = defaults.value(forKey: "countries") as! String
+
+            delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
+            self.dismiss(animated: false, completion: nil)
+        }
+
+//        delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+//        self.dismiss(animated: false, completion: nil)
     }
     
     // MARK: - Datasource
