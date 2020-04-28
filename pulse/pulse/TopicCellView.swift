@@ -48,9 +48,8 @@ class TopicCellView: UICollectionViewCell {
         collectionView.delegate = self
         
         collectionView.register(TopicCell.self, forCellWithReuseIdentifier: topicCellID)
-        collectionView.allowsMultipleSelection = true
         
-        // setu array
+        // setup array
         topics.forEach{finalData.append(FilterData(itemName: $0))}
     }
 }

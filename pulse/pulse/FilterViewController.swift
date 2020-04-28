@@ -26,7 +26,6 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
     
@@ -98,8 +97,15 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
             }
         }
         
-        delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-        self.dismiss(animated: false, completion: nil)
+        if (topics.count >= 1 && countries.count == 0) {
+            let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            clearAll()
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
     // MARK:- Datasource
