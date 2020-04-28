@@ -48,7 +48,6 @@ class CountriesCellView: UICollectionViewCell {
         collectionView.delegate = self
         
         collectionView.register(CountryCell.self, forCellWithReuseIdentifier: countryCellID)
-        collectionView.allowsMultipleSelection = true
         
         // setup array
         if let countriesPath = Bundle.main.path(forResource: "countries", ofType: ".txt") {
