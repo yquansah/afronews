@@ -12,8 +12,7 @@ import SwiftyJSON
 import RealmSwift
 
 class MainNewsController: UIViewController, DonePressed {
-    
-    
+
     @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Define variables
@@ -40,7 +39,7 @@ class MainNewsController: UIViewController, DonePressed {
         
         //Load saved filter if available.
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil  {
+        if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil {
             loadFilter()
         }
         
@@ -71,6 +70,8 @@ class MainNewsController: UIViewController, DonePressed {
             newArticle.content = result["content"].stringValue
             newArticle.imageURL = result["urlToImage"].stringValue
             newArticle.publishedAt = result["publishedAt"].stringValue
+
+            print("Image URL after parsing: \(newArticle.imageURL)")
             
             articles.append(newArticle)
         }
@@ -78,7 +79,7 @@ class MainNewsController: UIViewController, DonePressed {
         mainArticles.allArticles = articles
         tableview.reloadData()
     }
-    // Mark: - Done pressed delegate function
+    // MARK: - Done pressed delegate function
     func dataFromFilter(topics: String, countries: String) {
         var queryParams = constructQueryParams(countries: countries, topics: topics)
         populateRequest(queryParams: &queryParams)
@@ -109,6 +110,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pulseCell", for: indexPath) as! NewsMainCell
         cell.updateCell(with: mainArticles.allArticles[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -149,7 +151,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         newArticle.title = article.title
         newArticle.url = article.url
     
-        do{
+        do {
             try realm.write {
                 realm.add(newArticle)
             }
@@ -158,8 +160,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
-    
+
     func saveFilter(topics: String, countries: String) {
         let defaults = UserDefaults.standard
         defaults.set(topics, forKey: "topics")
@@ -179,7 +180,7 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         
     }
 }
-
+// MARK: - Child view manipulation functions
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
@@ -200,9 +201,40 @@ extension UIViewController {
     }
 }
 
+// MARK: - Dismiss protocol
 extension MainNewsController: ReadyToDismiss {
     func removeDim() {
         viewToDim.isHidden = true
     }
     
+}
+
+extension MainNewsController: DidTapCellButton {
+    func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String) {
+        let newArticle = SavedArticle()
+                    newArticle.author = author
+               //     newArticle.content = article.content
+                    newArticle.desc = description
+                    newArticle.imageURL = mainImage
+               //     newArticle.publishedAt = article.publishedAt
+                    newArticle.title = title
+                    newArticle.url = url
+
+                    do {
+                        try realm.write {
+                            realm.add(newArticle)
+                        }
+                    } catch {
+                        print("Unable to write to realm db, \(error)")
+                    }
+    }
+
+    func didTapShareButton() {
+        let shareText = "Check this news article out, from Pulse."
+        let shareLink = link
+        let objectsToShare = [shareText, shareLink] as [Any]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        present(activityVC, animated: true)
+    }
+
 }

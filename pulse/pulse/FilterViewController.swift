@@ -58,8 +58,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 let firstCell = collectionView.cellForItem(at: path) as! TopicCellView
                 firstCell.finalData.forEach {$0.selectedState = false}
                 firstCell.collectionView.reloadData()
-            }
-            else if path.section == 1 {
+            } else if path.section == 1 {
                 let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
                 secondCell.finalData.forEach {$0.selectedState = false}
                 secondCell.collectionView.reloadData()
@@ -68,7 +67,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         
     }
     
-    // MARK:- Obc Functions
+    // MARK: - ObjC Functions
     @objc private func clearButton() {
         clearAll()
     }
@@ -86,8 +85,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                         topics.append(item.itemName)
                     }
                 }
-            }
-            else if path.section == 1 {
+            } else if path.section == 1 {
                 let secondCell = collectionView.cellForItem(at: path) as! CountriesCellView
                 secondCell.finalData.forEach {item in
                     if item.selectedState {
@@ -96,19 +94,34 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
-        
+        AA-AFN-38
+        let defaults = UserDefaults.standard
+
         if (topics.count >= 1 && countries.count == 0) {
             let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             clearAll()
             self.present(alert, animated: true, completion: nil)
         } else {
-            delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-            self.dismiss(animated: false, completion: nil)
+            if !topics.isEmpty || !countries.isEmpty {
+
+              defaults.set(topics.joined(separator: " "), forKey: "topics")
+              defaults.set(countries.joined(separator: " "), forKey: "countries")
+
+              delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+              self.dismiss(animated: false, completion: nil) 
+            } else {
+              let oldTopics = defaults.value(forKey: "topics") as! String
+              let oldCountries = defaults.value(forKey: "countries") as! String
+
+              delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
+              self.dismiss(animated: false, completion: nil)
+            }
         }
+
     }
     
-    // MARK:- Datasource
+    // MARK: - Datasource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -126,7 +139,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         return cell
     }
     
-    // MARK:- Delegate
+    // MARK: - Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let firstCellHeight = (view.frame.width/5) + 50 // the width of the topic cells (not including 16 for the edge) + 50
         let secondCellHeight = view.frame.height - firstCellHeight
@@ -148,4 +161,3 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         return header
     }
 }
-

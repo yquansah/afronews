@@ -18,7 +18,7 @@ class TopicCellView: UICollectionViewCell {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -50,11 +50,12 @@ class TopicCellView: UICollectionViewCell {
         collectionView.register(TopicCell.self, forCellWithReuseIdentifier: topicCellID)
         
         // setup array
-        topics.forEach{finalData.append(FilterData(itemName: $0))}
+        AA-AFN-38
+        topics.forEach { finalData.append(FilterData(itemName: $0))}
     }
 }
 
-// MARK:- Datasource
+// MARK: - Datasource
 extension TopicCellView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         finalData.count
@@ -70,11 +71,10 @@ extension TopicCellView: UICollectionViewDataSource {
         }
         return cell
     }
-    
-    
+
 }
 
-// MARK:- Delegate
+// MARK: - Delegate
 extension TopicCellView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (frame.width - 16)/5

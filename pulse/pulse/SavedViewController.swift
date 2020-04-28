@@ -9,12 +9,10 @@
 import UIKit
 import RealmSwift
 
-
 class SavedViewController: UIViewController {
     
     var articles: Results<SavedArticle>?
-    
-    
+
     @IBOutlet weak var tableview: UITableView!
     
     // Define variables
@@ -40,8 +38,7 @@ class SavedViewController: UIViewController {
         articles = realm.objects(SavedArticle.self)
         tableview.reloadData()
     }
-    
-    
+
 }
 
 extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
@@ -77,7 +74,6 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
             }
-            
             
         }
     }

@@ -9,6 +9,11 @@
 import UIKit
 import Nuke
 
+protocol DidTapCellButton {
+    func didTapShareButton()
+    func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String)
+}
+
 class NewsMainCell: UITableViewCell {
 
     @IBOutlet private weak var mainImage: UIImageView!
@@ -16,13 +21,16 @@ class NewsMainCell: UITableViewCell {
     @IBOutlet private weak var mainDescription: UILabel!
     @IBOutlet private weak var country: UILabel!
     @IBOutlet private weak var publishedAt: UILabel!
-    
+
+    var delegate: DidTapCellButton?
+
     func updateCell(with article: Article) {
         author.text = article.author ?? "No Author"
         mainDescription.text = article.description
         country.text = article.country ?? "Unknown"
         if let url = URL(string: article.imageURL) {
             Nuke.loadImage(with: url, into: mainImage)
+            print("Image loaded")
         }
     }
     
@@ -34,4 +42,5 @@ class NewsMainCell: UITableViewCell {
             Nuke.loadImage(with: url, into: mainImage)
         }
     }
+
 }

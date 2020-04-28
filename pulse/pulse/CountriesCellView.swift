@@ -18,7 +18,7 @@ class CountriesCellView: UICollectionViewCell {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -60,7 +60,7 @@ class CountriesCellView: UICollectionViewCell {
     }
 }
 
-// MARK:- Datasource
+// MARK: - Datasource
 extension CountriesCellView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         finalData.count
@@ -77,10 +77,9 @@ extension CountriesCellView: UICollectionViewDataSource {
         return cell
     }
     
-    
 }
 
-// MARK:- Delegate
+// MARK: - Delegate
 extension CountriesCellView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (frame.width - 16)/5
