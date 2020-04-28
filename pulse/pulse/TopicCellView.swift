@@ -48,9 +48,9 @@ class TopicCellView: UICollectionViewCell {
         collectionView.delegate = self
         
         collectionView.register(TopicCell.self, forCellWithReuseIdentifier: topicCellID)
-        collectionView.allowsMultipleSelection = true
         
         // setup array
+        AA-AFN-38
         topics.forEach { finalData.append(FilterData(itemName: $0))}
     }
 }

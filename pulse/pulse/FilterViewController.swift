@@ -26,7 +26,6 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
     
@@ -95,26 +94,31 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
+        AA-AFN-38
         let defaults = UserDefaults.standard
 
-        if !topics.isEmpty || !countries.isEmpty {
-
-            defaults.set(topics.joined(separator: " "), forKey: "topics")
-            defaults.set(countries.joined(separator: " "), forKey: "countries")
-
-            delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-            self.dismiss(animated: false, completion: nil)
-            
+        if (topics.count >= 1 && countries.count == 0) {
+            let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            clearAll()
+            self.present(alert, animated: true, completion: nil)
         } else {
-            let oldTopics = defaults.value(forKey: "topics") as! String
-            let oldCountries = defaults.value(forKey: "countries") as! String
+            if !topics.isEmpty || !countries.isEmpty {
 
-            delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
-            self.dismiss(animated: false, completion: nil)
+              defaults.set(topics.joined(separator: " "), forKey: "topics")
+              defaults.set(countries.joined(separator: " "), forKey: "countries")
+
+              delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+              self.dismiss(animated: false, completion: nil) 
+            } else {
+              let oldTopics = defaults.value(forKey: "topics") as! String
+              let oldCountries = defaults.value(forKey: "countries") as! String
+
+              delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
+              self.dismiss(animated: false, completion: nil)
+            }
         }
 
-//        delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-//        self.dismiss(animated: false, completion: nil)
     }
     
     // MARK: - Datasource
