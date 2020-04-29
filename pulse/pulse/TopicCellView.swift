@@ -50,7 +50,6 @@ class TopicCellView: UICollectionViewCell {
         collectionView.register(TopicCell.self, forCellWithReuseIdentifier: topicCellID)
         
         // setup array
-        AA-AFN-38
         topics.forEach { finalData.append(FilterData(itemName: $0))}
     }
 }

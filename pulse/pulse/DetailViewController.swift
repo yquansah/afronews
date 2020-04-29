@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import Nuke
 
-protocol ReadyToDismiss {
+protocol ReadyToDismiss: class {
     func removeDim()
 }
 
@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
     var mainDes: String = ""
     var auth: String = ""
     var link: String = ""
-    var delegate: ReadyToDismiss?
+    weak var delegate: ReadyToDismiss?
 
     @IBOutlet private weak var mainImage: UIImageView!
     @IBOutlet private weak var mainTitle: UILabel!

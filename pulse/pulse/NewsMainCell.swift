@@ -9,7 +9,7 @@
 import UIKit
 import Nuke
 
-protocol DidTapCellButton {
+protocol DidTapCellButton: class {
     func didTapShareButton()
     func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String)
 }
@@ -22,7 +22,7 @@ class NewsMainCell: UITableViewCell {
     @IBOutlet private weak var country: UILabel!
     @IBOutlet private weak var publishedAt: UILabel!
 
-    var delegate: DidTapCellButton?
+    weak var delegate: DidTapCellButton?
 
     func updateCell(with article: Article) {
         author.text = article.author ?? "No Author"

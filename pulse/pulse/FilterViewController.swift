@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DonePressed {
+protocol DonePressed: class {
     func dataFromFilter(topics: String, countries: String)
 }
 
@@ -22,7 +22,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     private let countryCellViewID = "countryCellView"
     private let headerCellID = "headerCell"
     
-    var delegate: DonePressed?
+    weak var delegate: DonePressed?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,10 +94,9 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
-        AA-AFN-38
         let defaults = UserDefaults.standard
 
-        if (topics.count >= 1 && countries.count == 0) {
+        if topics.count >= 1 && countries.count == 0 {
             let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             clearAll()
