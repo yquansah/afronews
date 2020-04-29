@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import RealmSwift
 
-class MainNewsController: UIViewController, DonePressed {
+class MainNewsController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
@@ -20,6 +20,29 @@ class MainNewsController: UIViewController, DonePressed {
     private var mainArticles = ArticleStore()
     private var savedArticle = SavedArticle()
     private var api: API!
+    
+    private lazy var backgroundLabel: UILabel = {
+        // This label is used to inform the user if there is no result
+        let label = UILabel()
+        label.center = self.view.center
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .black
+        label.textAlignment = NSTextAlignment.center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = ""
+        return label
+    }()
+    
+    private lazy var indicateActivity: UIActivityIndicatorView = {
+        // Activity indicator to show user that there is searching going on
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = self.view.center
+        indicator.hidesWhenStopped = true
+        
+       return indicator
+    }()
     
     lazy var viewToDim: UIView = {
         let uiView = UIView()
@@ -32,20 +55,32 @@ class MainNewsController: UIViewController, DonePressed {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+         
+        setupView()
         
         api = API()
-        tableview.delegate = self
-        tableview.dataSource = self
-        
         //Load saved filter if available.
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "topics") != nil || defaults.object(forKey: "countries") != nil {
             loadFilter()
         }
         
+    }
+    
+    private func setupView() {
+        view.addSubview(backgroundLabel)
+        view.addSubview(indicateActivity)
         // Dimming
         view.addSubview(viewToDim)
+        // Set constrains and frame for views tha need it
+        backgroundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        backgroundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        backgroundLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width - 8).isActive = true
+        backgroundLabel.heightAnchor.constraint(equalToConstant: 500).isActive = true
         viewToDim.frame = view.frame
+        
+        tableview.delegate = self
+        tableview.dataSource = self
     }
     
     private func constructQueryParams(countries: String, topics: String) -> [String: Any] {
@@ -53,9 +88,10 @@ class MainNewsController: UIViewController, DonePressed {
     }
     
     public func populateRequest(queryParams: inout [String: Any]) {
-        api.makeRequest(index: 0, params: &queryParams) { response in
+        indicateActivity.startAnimating()
+        api.makeRequest(index: 0, params: &queryParams) { [weak self] response in
             let data = JSON(response)
-            self.parse(json: data)
+            self?.parse(json: data)
         }
     }
     
@@ -75,16 +111,19 @@ class MainNewsController: UIViewController, DonePressed {
             
             articles.append(newArticle)
         }
-
-        mainArticles.allArticles = articles
-        tableview.reloadData()
-    }
-    // MARK: - Done pressed delegate function
-    func dataFromFilter(topics: String, countries: String) {
-        var queryParams = constructQueryParams(countries: countries, topics: topics)
-        populateRequest(queryParams: &queryParams)
+        // Stop spinner, check if empty and either reload or show text to user
+        indicateActivity.stopAnimating()
         
-        saveFilter(topics: topics, countries: countries)
+        if articles.isEmpty {
+            tableview.isHidden = true
+            backgroundLabel.text = "There is no information available, please select another Country and Topic by clicking the Filter button"
+            return
+        }
+        
+        mainArticles.allArticles = articles
+        backgroundLabel.text = ""
+        tableview.isHidden = false
+        tableview.reloadData()
     }
     
     // MARK: - Filter Button
@@ -237,4 +276,16 @@ extension MainNewsController: DidTapCellButton {
         present(activityVC, animated: true)
     }
 
+}
+
+// MARK: - Done pressed delegate function
+extension MainNewsController: DonePressed {
+    
+    func dataFromFilter(topics: String, countries: String) {
+        // start spinner
+        var queryParams = constructQueryParams(countries: countries, topics: topics)
+        populateRequest(queryParams: &queryParams)
+        
+        saveFilter(topics: topics, countries: countries)
+    }
 }
