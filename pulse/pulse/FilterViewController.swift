@@ -96,7 +96,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         }
         let defaults = UserDefaults.standard
 
-        if (topics.count >= 1 && countries.count == 0) {
+        if topics.count >= 1 && countries.count == 0 {
             let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             clearAll()
