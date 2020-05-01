@@ -97,8 +97,11 @@ class MainNewsController: UIViewController {
     
     func parse(json: JSON) {
         var articles = [Article]()
+        
+        let country : String = json["country"].stringValue
         for result in json["articles"].arrayValue {
             let newArticle = Article()
+            newArticle.country = country
             newArticle.title = result["title"].stringValue
             newArticle.description = result["description"].stringValue
             newArticle.url =  result["url"].stringValue
