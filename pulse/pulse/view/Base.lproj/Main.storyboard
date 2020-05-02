@@ -483,35 +483,55 @@
             </objects>
             <point key="canvasLocation" x="1683" y="173"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="nvV-Bg-dr4">
             <objects>
-                <viewController id="PFx-5J-yrV" sceneMemberID="viewController">
+                <viewController id="PFx-5J-yrV" customClass="AboutViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0aS-yD-Ww7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPc-uA-uGv">
-                                <rect key="frame" x="123" y="143" width="115" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPc-uA-uGv">
+                                <rect key="frame" x="20" y="20" width="374" height="228"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="nuD-tp-uwc"/>
+                                </constraints>
+                                <string key="text">Thanks for checking out the Pulse News app!
+
+Quickly catch up on the latest news about countries from the african continent.
+
+Created by Yoofi, Kwabs, Kameni &amp; Adnan.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-gA-6JZ">
-                                <rect key="frame" x="123" y="196.5" width="115" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44O-nS-lIv">
+                                <rect key="frame" x="46" y="396" width="78" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Review"/>
+                                <connections>
+                                    <action selector="reviewBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="ge5-XR-uvc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bus-9P-S6T">
+                                <rect key="frame" x="179" y="396" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Send Feedback"/>
+                                <connections>
+                                    <action selector="feedbackBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="9Jk-E4-G1V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="H5c-gA-6JZ" secondAttribute="leading" id="AvT-Vg-g2y"/>
-                            <constraint firstItem="ZPY-mJ-403" firstAttribute="trailing" secondItem="QPc-uA-uGv" secondAttribute="trailing" constant="176" id="HyR-rb-Wnt"/>
-                            <constraint firstItem="H5c-gA-6JZ" firstAttribute="top" secondItem="QPc-uA-uGv" secondAttribute="bottom" constant="33" id="Txu-4q-7l9"/>
-                            <constraint firstItem="QPc-uA-uGv" firstAttribute="trailing" secondItem="H5c-gA-6JZ" secondAttribute="trailing" id="f4H-n8-Rd8"/>
-                            <constraint firstItem="QPc-uA-uGv" firstAttribute="top" secondItem="ZPY-mJ-403" secondAttribute="top" constant="143" id="l0j-g4-ylp"/>
-                            <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="123" id="vgx-Xw-Qa8"/>
+                            <constraint firstItem="44O-nS-lIv" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="46" id="3B5-iV-SxU"/>
+                            <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="20" id="3vh-sh-esQ"/>
+                            <constraint firstItem="QPc-uA-uGv" firstAttribute="top" secondItem="ZPY-mJ-403" secondAttribute="top" constant="20" id="56e-pc-whZ"/>
+                            <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="0aS-yD-Ww7" secondAttribute="leadingMargin" id="FJG-A2-DK5"/>
+                            <constraint firstItem="bus-9P-S6T" firstAttribute="leading" secondItem="44O-nS-lIv" secondAttribute="trailing" constant="55" id="GHD-4t-cqk"/>
+                            <constraint firstItem="ZPY-mJ-403" firstAttribute="bottom" secondItem="44O-nS-lIv" secondAttribute="bottom" constant="287" id="S3M-iC-zT7"/>
+                            <constraint firstItem="ZPY-mJ-403" firstAttribute="trailing" secondItem="QPc-uA-uGv" secondAttribute="trailing" constant="20" id="SeB-KU-WVq"/>
+                            <constraint firstItem="44O-nS-lIv" firstAttribute="baseline" secondItem="bus-9P-S6T" secondAttribute="baseline" id="xcH-E5-t0H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPY-mJ-403"/>
                     </view>
