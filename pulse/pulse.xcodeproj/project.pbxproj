@@ -48,6 +48,7 @@
 		24E8242922B88145006EAE11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24E8242C22B88145006EAE11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24E8242E22B88145006EAE11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24FB0CF7245D733D0013505A /* pulse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pulse.entitlements; sourceTree = "<group>"; };
 		26DC2DD73C83250F9BDA4672 /* Pods_pulse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pulse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		749323A62DDD778C20635586 /* Pods-pulse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pulse.release.xcconfig"; path = "Target Support Files/Pods-pulse/Pods-pulse.release.xcconfig"; sourceTree = "<group>"; };
 		8479E1C5243084D30036CAAA /* SavedArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticle.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		24E8242122B88141006EAE11 /* pulse */ = {
 			isa = PBXGroup;
 			children = (
+				24FB0CF7245D733D0013505A /* pulse.entitlements */,
 				ADDC71DD23F08795004ABEA7 /* SupportFiles */,
 				86A3A08722D8328500A8DE84 /* controller */,
 				86A3A08622D8328000A8DE84 /* view */,
@@ -478,15 +480,16 @@
 			baseConfigurationReference = CA129DAA17C6A994EA2CC8CA /* Pods-pulse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C23GLR43JA;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kameni.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,15 +501,16 @@
 			baseConfigurationReference = 749323A62DDD778C20635586 /* Pods-pulse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C23GLR43JA;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kameni.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

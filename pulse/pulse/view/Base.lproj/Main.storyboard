@@ -315,6 +315,8 @@
                                             <outlet property="mainDescription" destination="BD1-tW-hR8" id="9CL-pT-5Pd"/>
                                             <outlet property="mainImage" destination="Iws-ex-047" id="7Q9-72-kQg"/>
                                             <outlet property="publishedAt" destination="oKg-3e-fge" id="N00-i6-pDQ"/>
+                                            <outlet property="saveButton" destination="09N-ID-fB2" id="mf8-ZG-i29"/>
+                                            <outlet property="shareButton" destination="1pO-Op-UGU" id="ooL-qS-ml0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -460,6 +462,8 @@
                                             <outlet property="mainDescription" destination="Zj8-gW-w25" id="W6b-GM-1Ag"/>
                                             <outlet property="mainImage" destination="PZz-Qr-rbo" id="hgR-ss-Dbs"/>
                                             <outlet property="publishedAt" destination="xjC-k3-rmV" id="Mzy-Vu-qUj"/>
+                                            <outlet property="saveButton" destination="hpn-cD-HAv" id="YiS-67-j0t"/>
+                                            <outlet property="shareButton" destination="tn4-Gy-Wqh" id="CNe-ku-T4k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -491,16 +495,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPc-uA-uGv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPc-uA-uGv">
                                 <rect key="frame" x="20" y="20" width="374" height="228"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="228" id="nuD-tp-uwc"/>
                                 </constraints>
                                 <string key="text">Thanks for checking out the Pulse News app!
 
-Quickly catch up on the latest news about countries from the african continent.
+Quickly catch up on the latest news from countries on the African continent.
 
-Created by Yoofi, Kwabs, Kameni &amp; Adnan.</string>
+Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
