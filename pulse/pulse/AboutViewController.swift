@@ -21,7 +21,7 @@ class AboutViewController: UIViewController {
     func aboutAlert() {
         let ac = UIAlertController(title: "Not Available", message: "These options are not available in the beta stage.", preferredStyle: .alert)
 
-        ac.addAction(UIAlertAction(title: "Gotcha", style: .default, handler: nil))
+        ac.addAction(UIAlertAction(title: "Ok.", style: .default, handler: nil))
         present(ac, animated: true)
 
     }
