@@ -65,7 +65,8 @@ class NewsMainCell: UITableViewCell {
     }
     
     @objc private func saveRecognizer(gesture: UIGestureRecognizer) {
-        print("Svae tappeddd")
+        print("Save tapped")
+
     }
 
 }
