@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class SavedArticle: Object {
-    
+
     //newsAPI deliverables
     @objc dynamic var author: String?
     @objc dynamic var title: String = ""

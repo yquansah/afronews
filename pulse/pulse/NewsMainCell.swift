@@ -48,7 +48,6 @@ class NewsMainCell: UITableViewCell {
         country.text = article.country ?? "Unknown"
         if let url = URL(string: article.imageURL) {
             Nuke.loadImage(with: url, into: mainImage)
-            print("Image loaded")
         }
     }
     

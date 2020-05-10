@@ -16,7 +16,6 @@ class SavedViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     // Define variables
-    let realm = try! Realm()
 //    private var savedArticle = SavedArticle()
 //    private var api: API!
     
@@ -35,7 +34,8 @@ class SavedViewController: UIViewController {
     }
     
     func load() {
-        articles = realm.objects(SavedArticle.self)
+        articles = Storage.loadArticles()
+
         tableview.reloadData()
     }
 
@@ -65,10 +65,8 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             if let article = articles?[indexPath.row] {
                 do {
-                    try realm.write {
-                        realm.delete(article)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                    }
+                    Storage.deleteArticle(article: article)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
                 } catch {
                     print("Error with deleting article, \(error)")
                 }
