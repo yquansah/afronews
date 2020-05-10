@@ -9,14 +9,12 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import RealmSwift
 
 class MainNewsController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Define variables
-    let realm = try! Realm()
     private var mainArticles = ArticleStore()
     private var savedArticle = SavedArticle()
     private var api: API!
@@ -157,10 +155,8 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
-        //detailVC.updateDetailView(with: mainArticles.allArticles[indexPath.row])
         detailVC.delegate = self
         detailVC.auth = mainArticles.allArticles[indexPath.row].author!
         detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
@@ -186,21 +182,14 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     func saveSelectedArticles(article: Article) {
         let newArticle = SavedArticle()
         newArticle.author = article.author
-       // newArticle.content = article.content
+        //newArticle.content = article.content
         newArticle.desc = article.description
         newArticle.imageURL = article.imageURL
-      //  newArticle.publishedAt = article.publishedAt
+        //newArticle.publishedAt = article.publishedAt
         newArticle.title = article.title
         newArticle.url = article.url
     
-        do {
-            try realm.write {
-                realm.add(newArticle)
-            }
-        } catch {
-            print("Unable to write to realm db, \(error)")
-        }
-        
+        Storage.saveArticle(article: newArticle)
     }
 
     func saveFilter(topics: String, countries: String) {
@@ -253,22 +242,17 @@ extension MainNewsController: ReadyToDismiss {
 
 extension MainNewsController: DidTapCellButton {
     func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String) {
-        let newArticle = SavedArticle()
-                    newArticle.author = author
-               //     newArticle.content = article.content
-                    newArticle.desc = description
-                    newArticle.imageURL = mainImage
-               //     newArticle.publishedAt = article.publishedAt
-                    newArticle.title = title
-                    newArticle.url = url
 
-                    do {
-                        try realm.write {
-                            realm.add(newArticle)
-                        }
-                    } catch {
-                        print("Unable to write to realm db, \(error)")
-                    }
+        let newArticle = SavedArticle()
+        newArticle.author = author
+        //newArticle.content = article.content
+        newArticle.desc = description
+        newArticle.imageURL = mainImage
+        //newArticle.publishedAt = article.publishedAt
+        newArticle.title = title
+        newArticle.url = url
+
+        Storage.saveArticle(article: newArticle)
     }
 
     func didTapShareButton() {

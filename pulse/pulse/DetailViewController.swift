@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Nuke
 
 protocol ReadyToDismiss: class {
@@ -16,7 +15,6 @@ protocol ReadyToDismiss: class {
 
 class DetailViewController: UIViewController {
     
-    let realm = try! Realm()
     var image: String = ""
     var givenTitle: String = ""
     var mainDes: String = ""
@@ -59,22 +57,29 @@ class DetailViewController: UIViewController {
 
     @IBAction func saveButton(_ sender: UIButton) {
         let newArticle = SavedArticle()
-            newArticle.author = auth
-       //     newArticle.content = article.content
-            newArticle.desc = mainDes
-            newArticle.imageURL = image
-       //     newArticle.publishedAt = article.publishedAt
-            newArticle.title = givenTitle
-            newArticle.url = link
+        newArticle.author = auth
+       //newArticle.content = article.content
+        newArticle.desc = mainDes
+        newArticle.imageURL = image
+       //newArticle.publishedAt = article.publishedAt
+        newArticle.title = givenTitle
+        newArticle.url = link
         
-            do {
-                try realm.write {
-                    realm.add(newArticle)
-                }
-            } catch {
-                print("Unable to write to realm db, \(error)")
-            }
-            
+        let queryString = "author = '\(auth)' AND title = '\(givenTitle)'"
+        
+        let queryArticles = Storage.loadArticles().filter(queryString)
+        
+        var alert : UIAlertController
+        if queryArticles.count == 0 {
+            Storage.saveArticle(article: newArticle)
+            alert = UIAlertController(title: "Success", message: "Article was successfully saved", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            alert = UIAlertController(title: "Error", message: "Article has already been saved", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
 }

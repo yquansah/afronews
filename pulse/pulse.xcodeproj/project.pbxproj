@@ -30,6 +30,7 @@
 		86A5EC052308A2040025073F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5EC012308A2040025073F /* Filter.swift */; };
 		ADCD56E22380B7FA0036F41A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD56E12380B7FA0036F41A /* DetailViewController.swift */; };
 		ADDC71DF23F087A8004ABEA7 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADDC71DE23F087A8004ABEA7 /* countries.txt */; };
+		E3D016B524678EB500438683 /* storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D016B424678EB500438683 /* storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		ADCD56E12380B7FA0036F41A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ADDC71DE23F087A8004ABEA7 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries.txt; sourceTree = "<group>"; };
 		CA129DAA17C6A994EA2CC8CA /* Pods-pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pulse.debug.xcconfig"; path = "Target Support Files/Pods-pulse/Pods-pulse.debug.xcconfig"; sourceTree = "<group>"; };
+		E3D016B424678EB500438683 /* storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		86A3A08722D8328500A8DE84 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				E3D016B324678E7500438683 /* storage */,
 				860115E222E3BE12007FDDE0 /* api */,
 				24E8242222B88141006EAE11 /* AppDelegate.swift */,
 				24E8242422B88141006EAE11 /* MainNewsController.swift */,
@@ -179,6 +182,14 @@
 				749323A62DDD778C20635586 /* Pods-pulse.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E3D016B324678E7500438683 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				E3D016B424678EB500438683 /* storage.swift */,
+			);
+			path = storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 				8479E1C824310E560036CAAA /* SavedViewController.swift in Sources */,
 				24E8242322B88141006EAE11 /* AppDelegate.swift in Sources */,
 				24C96C6B23B330CE006B8642 /* CountryCell.swift in Sources */,
+				E3D016B524678EB500438683 /* storage.swift in Sources */,
 				86A5EC042308A2040025073F /* ArticleStore.swift in Sources */,
 				86A5EC032308A2040025073F /* Saved.swift in Sources */,
 				2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */,
