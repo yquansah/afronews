@@ -55,8 +55,10 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = URL(string: articles![indexPath.row].url) {
-            UIApplication.shared.open(url)
-            
+            let webview = WebViewController()
+            webview.url = url
+            navigationController?.pushViewController(webview, animated: true)
+
         }
     }
     

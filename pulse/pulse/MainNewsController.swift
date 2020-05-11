@@ -242,7 +242,6 @@ extension MainNewsController: ReadyToDismiss {
         webview.url = url
         navigationController?.pushViewController(webview, animated: true)
 
-
     }
 
     func removeDim() {
