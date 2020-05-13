@@ -237,9 +237,9 @@ extension UIViewController {
 
 // MARK: - Dismiss protocol
 extension MainNewsController: ReadyToDismiss {
-    func displayWebView(with url: URL) {
+    func displayWebView(with url: String) {
         let webview = WebViewController()
-        webview.url = url
+        webview.urlString = url
         navigationController?.pushViewController(webview, animated: true)
 
     }

@@ -12,12 +12,14 @@ import WebKit
 class WebViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
-    var url: URL!
+    var urlString: String!
 
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
+
+        guard let url = URL(string: urlString) else { return }
 
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
@@ -36,8 +38,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 
     @objc func shareTapped() {
         let shareText = "Check this news article out, from Pulse."
-        let shareLink = link
-        let objectsToShare: [Any] = [shareText, shareLink]
+        let shareLink: String =  String(urlString)
+        let objectsToShare = [shareText, shareLink]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         present(activityVC, animated: true)    }
 

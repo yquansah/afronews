@@ -54,25 +54,20 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: articles![indexPath.row].url) {
-            let webview = WebViewController()
-            webview.url = url
-            navigationController?.pushViewController(webview, animated: true)
+        let url = articles![indexPath.row].url
+        let webview = WebViewController()
+        webview.urlString = url
+        navigationController?.pushViewController(webview, animated: true)
 
-        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             if let article = articles?[indexPath.row] {
-                do {
-                    Storage.deleteArticle(article: article)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                } catch {
-                    print("Error with deleting article, \(error)")
-                }
-                
+                Storage.deleteArticle(article: article)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+
             }
             
         }
