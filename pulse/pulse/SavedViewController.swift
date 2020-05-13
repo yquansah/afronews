@@ -26,7 +26,6 @@ class SavedViewController: UIViewController {
         
         tableview.delegate = self
         tableview.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +49,7 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "savedPulseCell", for: indexPath) as! NewsMainCell
         cell.updateCell(with: articles![indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -76,4 +76,21 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 176 // This is because the images are 140 + 18  at the top margin and + 18 at the bottom margin
+    }
+    
+}
+
+// MARK: - DidTapCellButton functions
+extension SavedViewController: DidTapCellButton {
+    
+    func didTapShareButton(article: Article) {
+        self.shareArticle(article: article)
+    }
+    
+    func didTapSaveButton(article: Article) {
+        // do nothing since we don't want to save in this view
+    }
+
 }

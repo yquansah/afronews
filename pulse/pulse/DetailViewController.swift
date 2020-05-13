@@ -20,7 +20,9 @@ class DetailViewController: UIViewController {
     var mainDes: String = ""
     var auth: String = ""
     var link: String = ""
+    
     weak var delegate: ReadyToDismiss?
+    var article: Article?
 
     @IBOutlet private weak var mainImage: UIImageView!
     @IBOutlet private weak var mainTitle: UILabel!
@@ -48,38 +50,11 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func shareButton(_ sender: UIButton) {
-        let shareText = "Check this news article out, from Pulse."
-        let shareLink = link
-        let objectsToShare = [shareText, shareLink]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        present(activityVC, animated: true)
+        self.shareArticle(article: article!)
     }
 
     @IBAction func saveButton(_ sender: UIButton) {
-        let newArticle = SavedArticle()
-        newArticle.author = auth
-       //newArticle.content = article.content
-        newArticle.desc = mainDes
-        newArticle.imageURL = image
-       //newArticle.publishedAt = article.publishedAt
-        newArticle.title = givenTitle
-        newArticle.url = link
-        
-        let queryString = "author = '\(auth)' AND title = '\(givenTitle)'"
-        
-        let queryArticles = Storage.loadArticles().filter(queryString)
-        
-        var alert : UIAlertController
-        if queryArticles.count == 0 {
-            Storage.saveArticle(article: newArticle)
-            alert = UIAlertController(title: "Success", message: "Article was successfully saved", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            alert = UIAlertController(title: "Error", message: "Article has already been saved", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        self.saveArticle(article: article!)
     }
 
 }

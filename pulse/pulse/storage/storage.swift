@@ -31,8 +31,7 @@ class Storage {
           try realmStorage.write {
             realmStorage.delete(article)
             }
-        }
-        catch {
+        } catch {
             print("Error deleting article, \(error)")
         }
     }
