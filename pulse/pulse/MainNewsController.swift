@@ -185,19 +185,6 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Persistency functions
-    
-//    func saveSelectedArticles(article: Article) {
-//        let newArticle = SavedArticle()
-//        newArticle.author = article.author
-//        //newArticle.content = article.content
-//        newArticle.desc = article.description
-//        newArticle.imageURL = article.imageURL
-//        //newArticle.publishedAt = article.publishedAt
-//        newArticle.title = article.title
-//        newArticle.url = article.url
-//
-//        Storage.saveArticle(article: newArticle)
-//    }
 
     func saveFilter(topics: String, countries: String) {
         let defaults = UserDefaults.standard

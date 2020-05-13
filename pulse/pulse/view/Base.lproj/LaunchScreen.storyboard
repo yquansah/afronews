@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,16 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="AlG-MA-kdC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_alt" translatesAutoresizingMaskIntoConstraints="NO" id="FFv-dL-iTf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="AlG-MA-kdC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LPU-4A-Oyt"/>
-                            <constraint firstItem="AlG-MA-kdC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dsd-9P-oKU"/>
-                            <constraint firstItem="AlG-MA-kdC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="j8y-Od-3Jo"/>
-                            <constraint firstAttribute="bottom" secondItem="AlG-MA-kdC" secondAttribute="bottom" id="ziK-fY-49u"/>
+                            <constraint firstItem="FFv-dL-iTf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JFG-Gp-YLy"/>
+                            <constraint firstItem="FFv-dL-iTf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="PMl-06-eDj"/>
+                            <constraint firstItem="FFv-dL-iTf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eK1-tC-Nv6"/>
+                            <constraint firstAttribute="bottom" secondItem="FFv-dL-iTf" secondAttribute="bottom" id="hYc-lo-aEb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="187.5" height="333.5"/>
+        <image name="splash_alt" width="187.5" height="333.5"/>
     </resources>
 </document>

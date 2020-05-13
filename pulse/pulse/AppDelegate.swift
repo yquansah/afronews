@@ -13,6 +13,7 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let defaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Could not initialise new realm, \(error)")
         }
+        
+        launchPulse()
         
         return true
     }
@@ -46,6 +49,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    private func launchPulse() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let layout = UICollectionViewFlowLayout()
+        let filterVC = FilterViewController(collectionViewLayout: layout)
+        filterVC.firstTimeDelegate = self
+        let navCon = UINavigationController(rootViewController: filterVC)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = storyboard.instantiateViewController(identifier: "initialClassTabBarVC") as InitialClassTabBarVC
+        
+        if defaults.value(forKey: "isFirstTime") != nil {
+            // Not the first time. The first time should return nil and this should not run
+            window?.rootViewController = mainController
+            window?.makeKeyAndVisible()
+        } else {
+            // First time, send user to filter screen
+            window?.rootViewController = navCon
+            window?.makeKeyAndVisible()
+        }
+    }
+
+}
+extension AppDelegate: FirstTimeUseCase {
+    
+    func dismissFilterView(sender: FilterViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = storyboard.instantiateViewController(identifier: "initialClassTabBarVC") as InitialClassTabBarVC
+        sender.dismiss(animated: false, completion: nil)
+        defaults.set(false, forKey: "isFirstTime") // set this value so the right view is shown first the next time the user opens the app
+        window?.rootViewController = mainController
     }
 
 }
