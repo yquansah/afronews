@@ -11,6 +11,7 @@ import Nuke
 
 protocol ReadyToDismiss: class {
     func removeDim()
+    func displayWebView(with url: String)
 }
 
 class DetailViewController: UIViewController {
@@ -39,9 +40,12 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func redirToSourceButton(_ sender: UIButton) {
-        if let url = URL(string: link) {
-            UIApplication.shared.open(url)
-        }
+        
+            self.remove()
+        //    UIApplication.shared.open(url)
+            delegate?.displayWebView(with: link)
+            delegate?.removeDim()
+
     }
     @IBAction func dismissView(_ sender: UIButton) {
         self.remove()
@@ -55,6 +59,7 @@ class DetailViewController: UIViewController {
 
     @IBAction func saveButton(_ sender: UIButton) {
         self.saveArticle(article: article!)
+
     }
 
 }
