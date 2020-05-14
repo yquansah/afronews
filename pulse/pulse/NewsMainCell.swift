@@ -10,8 +10,8 @@ import UIKit
 import Nuke
 
 protocol DidTapCellButton: class {
-    func didTapShareButton()
-    func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String)
+    func didTapShareButton(article: Article)
+    func didTapSaveButton(article: Article)
 }
 
 class NewsMainCell: UITableViewCell {
@@ -25,11 +25,17 @@ class NewsMainCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIImageView!
     
     weak var delegate: DidTapCellButton?
+    private var cellArticle: Article?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setupCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainImage.image = UIImage(named: "spash_alt")
     }
     
     private func setupCell() {
@@ -43,6 +49,9 @@ class NewsMainCell: UITableViewCell {
     }
 
     func updateCell(with article: Article) {
+        
+        cellArticle = article
+        
         author.text = article.author ?? "No Author"
         mainDescription.text = article.description
         country.text = article.country ?? "Unknown"
@@ -52,6 +61,10 @@ class NewsMainCell: UITableViewCell {
     }
     
     func updateCell(with savedArticle: SavedArticle) {
+        // In order pass an Article object to the share protocol for the SaveVC, creating and Article object this SavedArticle. As we care about is the url
+        cellArticle = Article()
+        cellArticle?.url = savedArticle.url
+        
         author.text = savedArticle.author ?? "No Author"
         mainDescription.text = savedArticle.desc
         country.text = "Ghana"
@@ -61,11 +74,20 @@ class NewsMainCell: UITableViewCell {
     }
     
     @objc private func shareRecognizer(gesture: UIGestureRecognizer) {
-        delegate?.didTapShareButton()
+        guard let article = cellArticle else {
+            print("Error NewsMainCell - No articles to share")
+            return
+        }
+        delegate?.didTapShareButton(article: article)
+
     }
     
     @objc private func saveRecognizer(gesture: UIGestureRecognizer) {
-        print("Save tapped")
+        guard let article = cellArticle else {
+            print("Error NewsMainCell - No articles to save")
+            return
+        }
+        delegate?.didTapSaveButton(article: article)
 
     }
 

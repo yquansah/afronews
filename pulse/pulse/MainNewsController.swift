@@ -144,6 +144,7 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
     }
 }
 
+// MARK: - Tableview Delegate and Datasource
 extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -160,7 +161,9 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "detailView") as! DetailViewController
+        
         detailVC.delegate = self
+        detailVC.article = mainArticles.allArticles[indexPath.row]
         detailVC.auth = mainArticles.allArticles[indexPath.row].author!
         detailVC.givenTitle = mainArticles.allArticles[indexPath.row].title
         detailVC.mainDes = mainArticles.allArticles[indexPath.row].description
@@ -180,20 +183,11 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    // MARK: - Persistency functions
-    
-    func saveSelectedArticles(article: Article) {
-        let newArticle = SavedArticle()
-        newArticle.author = article.author
-        //newArticle.content = article.content
-        newArticle.desc = article.description
-        newArticle.imageURL = article.imageURL
-        //newArticle.publishedAt = article.publishedAt
-        newArticle.title = article.title
-        newArticle.url = article.url
-    
-        Storage.saveArticle(article: newArticle)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 176 // This is because the images are 140 + 18  at the top margin and + 18 at the bottom margin
     }
+    
+    // MARK: - Persistency functions
 
     func saveFilter(topics: String, countries: String) {
         let defaults = UserDefaults.standard
@@ -250,27 +244,15 @@ extension MainNewsController: ReadyToDismiss {
     
 }
 
+// MARK: - DidTapCellButton functions
 extension MainNewsController: DidTapCellButton {
-    func didTapSaveButton(author: String, description: String, mainImage: String, title: String, url: String) {
-
-        let newArticle = SavedArticle()
-        newArticle.author = author
-        //newArticle.content = article.content
-        newArticle.desc = description
-        newArticle.imageURL = mainImage
-        //newArticle.publishedAt = article.publishedAt
-        newArticle.title = title
-        newArticle.url = url
-
-        Storage.saveArticle(article: newArticle)
+    
+    func didTapShareButton(article: Article) {
+        self.shareArticle(article: article)
     }
-
-    func didTapShareButton() {
-        let shareText = "Check this news article out, from Pulse."
-        let shareLink = link
-        let objectsToShare = [shareText, shareLink] as [Any]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        present(activityVC, animated: true)
+    
+    func didTapSaveButton(article: Article) {
+        self.saveArticle(article: article)
     }
 
 }

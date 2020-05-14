@@ -12,6 +12,10 @@ protocol DonePressed: class {
     func dataFromFilter(topics: String, countries: String)
 }
 
+protocol FirstTimeUseCase: class {
+    func dismissFilterView(sender: FilterViewController)
+}
+
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     /*
@@ -23,7 +27,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     private let headerCellID = "headerCell"
     
     weak var delegate: DonePressed?
-
+    weak var firstTimeDelegate: FirstTimeUseCase?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -94,30 +99,48 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
         }
+        
         let defaults = UserDefaults.standard
-
+        
         if topics.count >= 1 && countries.count == 0 {
             let alert = UIAlertController(title: "Error", message: "You must choose a country if a topic is chosen", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             clearAll()
             self.present(alert, animated: true, completion: nil)
+            
         } else {
             if !topics.isEmpty || !countries.isEmpty {
-
-              defaults.set(topics.joined(separator: " "), forKey: "topics")
-              defaults.set(countries.joined(separator: " "), forKey: "countries")
-
-              delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
-              self.dismiss(animated: false, completion: nil) 
+                
+                defaults.set(topics.joined(separator: " "), forKey: "topics")
+                defaults.set(countries.joined(separator: " "), forKey: "countries")
+                
+                // Check if it is the first time user is opening the app and send them either back to app delegate or to the main VC
+                if defaults.value(forKey: "isFirstTime") != nil {
+                    delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+                    self.dismiss(animated: false, completion: nil)
+                    return
+                }
+                firstTimeDelegate?.dismissFilterView(sender: self)
+                
             } else {
-              let oldTopics = defaults.value(forKey: "topics") as! String
-              let oldCountries = defaults.value(forKey: "countries") as! String
-
-              delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
-              self.dismiss(animated: false, completion: nil)
+                // Since this view is called the first time users use the app, check if the user default is empty and ask user to select a country
+                if defaults.object(forKey: "topics") == nil && defaults.object(forKey: "countries") == nil {
+                    // We technically need coutry only but leaving topic just to be extra safe
+                    let alert = UIAlertController(title: "Error", message: "Please select a country to get started", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    clearAll()
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                
+                let oldTopics = defaults.value(forKey: "topics") as! String
+                let oldCountries = defaults.value(forKey: "countries") as! String
+                
+                delegate?.dataFromFilter(topics: oldTopics, countries: oldCountries)
+                self.dismiss(animated: false, completion: nil)
             }
         }
-
+        
     }
     
     // MARK: - Datasource
