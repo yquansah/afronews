@@ -213,9 +213,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6n1-kB-6Cf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6n1-kB-6Cf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pulseCell" rowHeight="176" id="F0K-8M-CwW" customClass="NewsMainCell" customModule="pulse" customModuleProvider="target">
@@ -312,6 +311,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6n1-kB-6Cf" firstAttribute="leading" secondItem="pTc-g3-xjz" secondAttribute="leading" id="1HJ-Ru-VOz"/>
+                            <constraint firstItem="6n1-kB-6Cf" firstAttribute="top" secondItem="pTc-g3-xjz" secondAttribute="top" id="Bw4-kh-w8c"/>
+                            <constraint firstItem="6n1-kB-6Cf" firstAttribute="bottom" secondItem="pTc-g3-xjz" secondAttribute="bottom" id="EYg-tx-V5u"/>
+                            <constraint firstItem="6n1-kB-6Cf" firstAttribute="trailing" secondItem="pTc-g3-xjz" secondAttribute="trailing" id="It9-Pf-5Cj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pTc-g3-xjz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="gxS-bv-xec">
@@ -343,9 +348,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-Gq-Ih3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-Gq-Ih3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedPulseCell" rowHeight="176" id="Z3c-qw-EQe" customClass="NewsMainCell" customModule="pulse" customModuleProvider="target">
@@ -443,6 +447,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0B7-Gq-Ih3" firstAttribute="top" secondItem="wcU-z7-9QB" secondAttribute="top" id="09X-6v-W9x"/>
+                            <constraint firstItem="0B7-Gq-Ih3" firstAttribute="trailing" secondItem="wcU-z7-9QB" secondAttribute="trailing" id="5Q3-21-i9R"/>
+                            <constraint firstItem="0B7-Gq-Ih3" firstAttribute="bottom" secondItem="wcU-z7-9QB" secondAttribute="bottom" id="WM1-gh-Tw9"/>
+                            <constraint firstItem="0B7-Gq-Ih3" firstAttribute="leading" secondItem="wcU-z7-9QB" secondAttribute="leading" id="h1r-Ra-npC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wcU-z7-9QB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Saved" id="8dc-n0-E1q"/>
