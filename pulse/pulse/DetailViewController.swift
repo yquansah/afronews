@@ -59,7 +59,6 @@ class DetailViewController: UIViewController {
 
     @IBAction func saveButton(_ sender: UIButton) {
         self.saveArticle(article: article!)
-
     }
 
 }
