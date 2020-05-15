@@ -9,8 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import WebKit
 
-class MainNewsController: UIViewController {
+class MainNewsController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var tableview: UITableView!
     
@@ -18,6 +19,8 @@ class MainNewsController: UIViewController {
     private var mainArticles = ArticleStore()
     private var savedArticle = SavedArticle()
     private var api: API!
+
+  //  var webView: WKWebView!
     
     private lazy var backgroundLabel: UILabel = {
         // This label is used to inform the user if there is no result
@@ -228,6 +231,13 @@ extension UIViewController {
 
 // MARK: - Dismiss protocol
 extension MainNewsController: ReadyToDismiss {
+    func displayWebView(with url: String) {
+        let webview = WebViewController()
+        webview.urlString = url
+        navigationController?.pushViewController(webview, animated: true)
+
+    }
+
     func removeDim() {
         viewToDim.isHidden = true
     }
