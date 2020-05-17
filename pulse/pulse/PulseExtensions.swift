@@ -18,10 +18,10 @@ extension UIViewController {
         // This function is used to save any article from any view controller
         let newArticle = SavedArticle()
         newArticle.author = article.author!
-        //newArticle.content = article.content
+        newArticle.country = article.country!
         newArticle.desc = article.description
         newArticle.imageURL = article.imageURL
-        //newArticle.publishedAt = article.publishedAt
+        newArticle.publishedAt = article.publishedAt
         newArticle.title = article.title
         newArticle.url = article.url
          
