@@ -19,5 +19,6 @@ class SavedArticle: Object {
     @objc dynamic var imageURL: String = ""
     @objc dynamic var publishedAt: String = ""
     @objc dynamic var content: String = ""
+    @objc dynamic var country: String = ""
     var parentContainer = LinkingObjects(fromType: Saved.self, property: "savedArticles")
 }

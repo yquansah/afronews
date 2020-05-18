@@ -58,6 +58,9 @@ class NewsMainCell: UITableViewCell {
         if let url = URL(string: article.imageURL) {
             Nuke.loadImage(with: url, into: mainImage)
         }
+
+        publishedAt.text = formatDate(with: article.publishedAt)
+
     }
     
     func updateCell(with savedArticle: SavedArticle) {
@@ -67,10 +70,11 @@ class NewsMainCell: UITableViewCell {
         
         author.text = savedArticle.author ?? "No Author"
         mainDescription.text = savedArticle.desc
-        country.text = "Ghana"
+        country.text = savedArticle.country
         if let url = URL(string: savedArticle.imageURL) {
             Nuke.loadImage(with: url, into: mainImage)
         }
+        publishedAt.text = formatDate(with: savedArticle.publishedAt)
     }
     
     @objc private func shareRecognizer(gesture: UIGestureRecognizer) {
@@ -88,6 +92,25 @@ class NewsMainCell: UITableViewCell {
             return
         }
         delegate?.didTapSaveButton(article: article)
+
+    }
+
+    func formatDate(with publishedDate: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+
+        guard let publishedAt = dateFormatter.date(from: publishedDate) else { return "24h ago" }
+        let interval = DateInterval(start: publishedAt, end: Date())
+        let duration = Int(interval.duration) / 3600
+
+        switch duration {
+        case 0..<24:
+            return "\(duration)h ago"
+        case 24...:
+            return "\(duration / 24)d ago"
+        default:
+            return "24h ago"
+        }
 
     }
 
