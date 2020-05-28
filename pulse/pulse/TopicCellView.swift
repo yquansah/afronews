@@ -95,7 +95,7 @@ extension TopicCellView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! TopicCell
 
-        finalData[indexPath.row].selectedState = !finalData[indexPath.row].selectedState
+        finalData[indexPath.row].selectedState = false
         cell.viewToDim.isHidden = finalData[indexPath.row].selectedState ? false : true
     }
 }
