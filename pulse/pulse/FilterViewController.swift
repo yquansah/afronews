@@ -35,7 +35,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     private func setupView() {
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
