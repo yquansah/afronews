@@ -100,7 +100,7 @@ extension CountriesCellView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
         
-        finalData[indexPath.row].selectedState = !finalData[indexPath.row].selectedState
+        finalData[indexPath.row].selectedState = false
         cell.viewToDim.isHidden = finalData[indexPath.row].selectedState ? false : true
         
     }
