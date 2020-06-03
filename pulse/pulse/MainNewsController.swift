@@ -47,7 +47,7 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
     
     lazy var viewToDim: UIView = {
         let uiView = UIView()
-        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         uiView.isHidden = true
         
         return uiView
@@ -173,10 +173,10 @@ extension MainNewsController: UITableViewDelegate, UITableViewDataSource {
         self.add(detailVC)
         
         detailVC.view.translatesAutoresizingMaskIntoConstraints = false
-        detailVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        detailVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
         detailVC.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         detailVC.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
-        detailVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
+        detailVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30).isActive = true
         viewToDim.isHidden = false
 
         detailVC.updateDetailView()

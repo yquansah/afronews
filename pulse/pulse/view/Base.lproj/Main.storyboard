@@ -186,6 +186,7 @@
                         <outlet property="mainDescription" destination="ck2-th-dsg" id="7KF-Hn-uLA"/>
                         <outlet property="mainImage" destination="Bmm-Fd-H2o" id="emO-AZ-Qkh"/>
                         <outlet property="mainTitle" destination="oYP-dm-hZk" id="BYx-Ha-MxI"/>
+                        <outlet property="readButton" destination="J8S-1C-j9Y" id="BYR-ag-zVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rX-9W-BsQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
