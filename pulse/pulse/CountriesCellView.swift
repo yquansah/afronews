@@ -98,7 +98,12 @@ extension CountriesCellView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CountryCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CountryCell else {
+            // If the cell is off the screen this will be nil. In that case, just set the selected state
+            finalData[indexPath.row].selectedState = false
+            return
+            
+        }
         
         finalData[indexPath.row].selectedState = false
         cell.viewToDim.isHidden = finalData[indexPath.row].selectedState ? false : true
