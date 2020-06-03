@@ -9,11 +9,6 @@
 import UIKit
 import Nuke
 
-protocol ReadyToDismiss: class {
-    func removeDim()
-    func displayWebView(with url: String)
-}
-
 class DetailViewController: UIViewController {
     
     var image: String = ""

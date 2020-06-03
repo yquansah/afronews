@@ -1,0 +1,3 @@
+Welcome to Pulse. An app that was created by 4 Africans to make it easy to keep up with news on the continent. Please click "NEXT" and start by selecting a country and a topic (or just a country)
+
+You can always another country by clicking on "Filter"
