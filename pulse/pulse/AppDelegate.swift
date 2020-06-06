@@ -54,10 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func launchPulse() {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let layout = UICollectionViewFlowLayout()
-        let filterVC = FilterViewController(collectionViewLayout: layout)
-        filterVC.firstTimeDelegate = self
-        let navCon = UINavigationController(rootViewController: filterVC)
+        let vc = WelcomeViewController()
+        vc.firstTimeDelegate = self
+        let navCon = UINavigationController(rootViewController: vc)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainController = storyboard.instantiateViewController(identifier: "initialClassTabBarVC") as InitialClassTabBarVC
@@ -75,6 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 extension AppDelegate: FirstTimeUseCase {
+    func dismissWelcomeView(sender: WelcomeViewController) {
+        // Dismiss welcome view and show filter view
+        let layout = UICollectionViewFlowLayout()
+        let filterVC = FilterViewController(collectionViewLayout: layout)
+        filterVC.firstTimeDelegate = self
+        let navCon = UINavigationController(rootViewController: filterVC)
+        
+        sender.dismiss(animated: false, completion: nil)
+        window?.rootViewController = navCon
+    }
     
     func dismissFilterView(sender: FilterViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

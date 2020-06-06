@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */; };
+		2462D21F2487355600547088 /* HelperClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D21E2487355600547088 /* HelperClasses.swift */; };
+		2462D22224873EB700547088 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D22124873EB700547088 /* WelcomeViewController.swift */; };
+		2462D22424873F8100547088 /* PulseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D22324873F8100547088 /* PulseProtocols.swift */; };
+		2462D226248769AC00547088 /* welcome.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D225248769AC00547088 /* welcome.txt */; };
 		2464F3912380BDAE004236A1 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464F3902380BDAE004236A1 /* FilterViewController.swift */; };
 		246ADF67246BA6AE00175207 /* PulseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246ADF66246BA6AE00175207 /* PulseExtensions.swift */; };
 		246ADF69246BD61200175207 /* InitialClassTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246ADF68246BD61200175207 /* InitialClassTabBarVC.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMainCell.swift; sourceTree = "<group>"; };
+		2462D21E2487355600547088 /* HelperClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClasses.swift; sourceTree = "<group>"; };
+		2462D22124873EB700547088 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		2462D22324873F8100547088 /* PulseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseProtocols.swift; sourceTree = "<group>"; };
+		2462D225248769AC00547088 /* welcome.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = welcome.txt; sourceTree = "<group>"; };
 		2464F3902380BDAE004236A1 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		246ADF66246BA6AE00175207 /* PulseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseExtensions.swift; sourceTree = "<group>"; };
 		246ADF68246BD61200175207 /* InitialClassTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialClassTabBarVC.swift; sourceTree = "<group>"; };
@@ -85,6 +93,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2462D22024873E6A00547088 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */,
+				24C96C6623B0C30E006B8642 /* TopicCellView.swift */,
+				24C96C6C23B33283006B8642 /* CountriesCellView.swift */,
+				24C96C6823B0CAF1006B8642 /* TopicCell.swift */,
+				24C96C6A23B330CE006B8642 /* CountryCell.swift */,
+				24C96C6E23B3F5AF006B8642 /* HeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		24E8241622B88140006EAE11 = {
 			isa = PBXGroup;
 			children = (
@@ -160,21 +181,19 @@
 			children = (
 				E3D016B324678E7500438683 /* storage */,
 				860115E222E3BE12007FDDE0 /* api */,
+				2462D22024873E6A00547088 /* Cells */,
 				24E8242222B88141006EAE11 /* AppDelegate.swift */,
+				2462D22124873EB700547088 /* WelcomeViewController.swift */,
 				246ADF68246BD61200175207 /* InitialClassTabBarVC.swift */,
-				AD10DAF8246CFB42007D6206 /* AboutViewController.swift */,
 				24E8242422B88141006EAE11 /* MainNewsController.swift */,
-				2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */,
+				8479E1C724310E560036CAAA /* SavedViewController.swift */,
+				AD10DAF8246CFB42007D6206 /* AboutViewController.swift */,
 				ADCD56E12380B7FA0036F41A /* DetailViewController.swift */,
 				2464F3902380BDAE004236A1 /* FilterViewController.swift */,
-				24C96C6623B0C30E006B8642 /* TopicCellView.swift */,
 				AD10DAF6246CF919007D6206 /* WebViewController.swift */,
-				24C96C6C23B33283006B8642 /* CountriesCellView.swift */,
-				24C96C6823B0CAF1006B8642 /* TopicCell.swift */,
-				24C96C6A23B330CE006B8642 /* CountryCell.swift */,
-				24C96C6E23B3F5AF006B8642 /* HeaderCell.swift */,
-				8479E1C724310E560036CAAA /* SavedViewController.swift */,
 				246ADF66246BA6AE00175207 /* PulseExtensions.swift */,
+				2462D21E2487355600547088 /* HelperClasses.swift */,
+				2462D22324873F8100547088 /* PulseProtocols.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -183,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				ADDC71DE23F087A8004ABEA7 /* countries.txt */,
+				2462D225248769AC00547088 /* welcome.txt */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -267,6 +287,7 @@
 			files = (
 				24E8242D22B88145006EAE11 /* LaunchScreen.storyboard in Resources */,
 				24E8242A22B88145006EAE11 /* Assets.xcassets in Resources */,
+				2462D226248769AC00547088 /* welcome.txt in Resources */,
 				24E8242822B88141006EAE11 /* Main.storyboard in Resources */,
 				ADDC71DF23F087A8004ABEA7 /* countries.txt in Resources */,
 			);
@@ -345,12 +366,15 @@
 				249EA38523B6CF84007B2C95 /* FilterData.swift in Sources */,
 				24C96C6923B0CAF1006B8642 /* TopicCell.swift in Sources */,
 				86A5EC022308A2040025073F /* Article.swift in Sources */,
+				2462D22224873EB700547088 /* WelcomeViewController.swift in Sources */,
 				246ADF67246BA6AE00175207 /* PulseExtensions.swift in Sources */,
 				24E8242522B88141006EAE11 /* MainNewsController.swift in Sources */,
 				24C96C6723B0C30E006B8642 /* TopicCellView.swift in Sources */,
 				24C96C6D23B33283006B8642 /* CountriesCellView.swift in Sources */,
 				24C96C6F23B3F5AF006B8642 /* HeaderCell.swift in Sources */,
 				2464F3912380BDAE004236A1 /* FilterViewController.swift in Sources */,
+				2462D22424873F8100547088 /* PulseProtocols.swift in Sources */,
+				2462D21F2487355600547088 /* HelperClasses.swift in Sources */,
 				860115E422E3BE36007FDDE0 /* afronewsapi.swift in Sources */,
 				8479E1C6243084D30036CAAA /* SavedArticle.swift in Sources */,
 				8479E1C824310E560036CAAA /* SavedViewController.swift in Sources */,
@@ -510,14 +534,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNT3ZRB35C;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bdt.pulse;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,13 +556,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNT3ZRB35C;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

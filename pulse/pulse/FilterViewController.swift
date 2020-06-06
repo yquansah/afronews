@@ -8,20 +8,12 @@
 
 import UIKit
 
-protocol DonePressed: class {
-    func dataFromFilter(topics: String, countries: String)
-}
-
-protocol FirstTimeUseCase: class {
-    func dismissFilterView(sender: FilterViewController)
-}
-
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     /*
      This is responsible for filter view. It will help you select the country and topics
      */
-    // Properties
+    // MARK: - Properties
     private let topicCellViewID = "topicViewCell"
     private let countryCellViewID = "countryCellView"
     private let headerCellID = "headerCell"

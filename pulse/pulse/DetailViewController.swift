@@ -9,11 +9,6 @@
 import UIKit
 import Nuke
 
-protocol ReadyToDismiss: class {
-    func removeDim()
-    func displayWebView(with url: String)
-}
-
 class DetailViewController: UIViewController {
     
     var image: String = ""
@@ -29,7 +24,15 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var mainTitle: UILabel!
     @IBOutlet private weak var mainDescription: UILabel!
     @IBOutlet private weak var author: UILabel!
-
+    @IBOutlet weak var readButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.layer.cornerRadius = 8
+        self.view.layer.masksToBounds = true
+        readButton.layer.cornerRadius = 5
+    }
+    
     func updateDetailView() {
         mainTitle.text = givenTitle
         mainDescription.text = mainDes
