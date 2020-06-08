@@ -35,7 +35,6 @@ class TrackerViewController: UIViewController {
 
             return indicator
 
-
     }()
 
     override func viewDidLoad() {
@@ -85,7 +84,7 @@ let apiURL: String = "https://coronavirus-tracker-api.herokuapp.com/v2/"
             var countryStat = TrackerCountryModel()
             countryStat.country = result["country"].stringValue
             countryStat.confirmed = result["latest"]["confirmed"].intValue
-            countryStat.deaths = result["latest"]["confirmed"].intValue
+            countryStat.deaths = result["latest"]["deaths"].intValue
             countryStat.population = result["country_population"].intValue
 
             countryStats.append(countryStat)
