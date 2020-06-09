@@ -20,6 +20,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="3RT-3r-gDF" kind="relationship" relationship="viewControllers" id="gjU-YA-hFG"/>
+                        <segue destination="lFD-Y6-7zV" kind="relationship" relationship="viewControllers" id="7A6-gp-c4n"/>
                         <segue destination="C3C-qg-gcw" kind="relationship" relationship="viewControllers" id="zgh-oW-7mP"/>
                     </connections>
                 </tabBarController>
@@ -530,6 +531,110 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
             </objects>
             <point key="canvasLocation" x="1740.5797101449277" y="-1147.0982142857142"/>
         </scene>
+        <!--Covid Tracker-->
+        <scene sceneID="scq-Ue-Bgp">
+            <objects>
+                <viewController id="lFD-Y6-7zV" customClass="TrackerViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bh-Vv-OiC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A1G-Ac-8ys">
+                                <rect key="frame" x="0.0" y="222" width="414" height="591"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countryCell" textLabel="Yfk-7e-5lG" detailTextLabel="sqi-gU-6ZS" style="IBUITableViewCellStyleSubtitle" id="cjR-sk-42M">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cjR-sk-42M" id="IfS-3y-zkw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yfk-7e-5lG">
+                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sqi-gU-6ZS">
+                                                    <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lFD-Y6-7zV" id="wwM-M3-dXG"/>
+                                    <outlet property="delegate" destination="lFD-Y6-7zV" id="V7v-Fh-jss"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed Cases:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7x-81-7ym">
+                                <rect key="frame" x="30" y="119" width="156.5" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Stats" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-bM-zjF">
+                                <rect key="frame" x="128" y="90" width="167" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Covid-19 Tracker" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsC-mK-JQC">
+                                <rect key="frame" x="82" y="47" width="249" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="jIP-Xf-qvA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deaths:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWz-WY-11K">
+                                <rect key="frame" x="30" y="160" width="68" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="TbW-1H-5bL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z7x-81-7ym" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" constant="30" id="6JB-q7-jLX"/>
+                            <constraint firstItem="yXD-bM-zjF" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" constant="128" id="HPi-HA-Mw0"/>
+                            <constraint firstItem="z7x-81-7ym" firstAttribute="leading" secondItem="jWz-WY-11K" secondAttribute="leading" id="Pn2-Hc-51Z"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="bottom" secondItem="A5Q-yn-6dh" secondAttribute="bottom" id="Sq9-rd-tkf"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="centerX" secondItem="9bh-Vv-OiC" secondAttribute="centerX" id="UgH-zL-lYa"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" id="Xzx-Zx-8OC"/>
+                            <constraint firstItem="LsC-mK-JQC" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" constant="82" id="Yj3-2U-c2V"/>
+                            <constraint firstItem="yXD-bM-zjF" firstAttribute="top" secondItem="LsC-mK-JQC" secondAttribute="bottom" constant="8" id="ZcU-Bg-f4f"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="top" secondItem="jWz-WY-11K" secondAttribute="bottom" constant="29" id="e1p-1Q-reX"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="top" secondItem="z7x-81-7ym" secondAttribute="bottom" constant="60" id="gWL-oF-aoY"/>
+                            <constraint firstItem="A5Q-yn-6dh" firstAttribute="trailing" secondItem="yXD-bM-zjF" secondAttribute="trailing" constant="119" id="kdq-yJ-WaQ"/>
+                            <constraint firstItem="LsC-mK-JQC" firstAttribute="top" secondItem="A5Q-yn-6dh" secondAttribute="top" constant="3" id="mTM-Jj-ySh"/>
+                            <constraint firstItem="A1G-Ac-8ys" firstAttribute="top" secondItem="yXD-bM-zjF" secondAttribute="bottom" constant="97" id="qBF-6P-UvS"/>
+                            <constraint firstItem="z7x-81-7ym" firstAttribute="top" secondItem="LsC-mK-JQC" secondAttribute="bottom" constant="37" id="t9h-cj-SXZ"/>
+                            <constraint firstItem="jWz-WY-11K" firstAttribute="top" secondItem="LsC-mK-JQC" secondAttribute="bottom" constant="78" id="uDD-zN-A0Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A5Q-yn-6dh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Covid Tracker" selectedImage="magnifyingglass.circle" catalog="system" id="enG-hw-Dd0"/>
+                    <connections>
+                        <outlet property="globalCasesLabel" destination="z7x-81-7ym" id="7X0-Jl-tTr"/>
+                        <outlet property="globalDeathsLabel" destination="jWz-WY-11K" id="uxC-YL-lwv"/>
+                        <outlet property="tableView" destination="A1G-Ac-8ys" id="vfV-91-jw9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aHf-gT-cjW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1400" y="-222.32142857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
@@ -537,6 +642,7 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
         <image name="btn_share" width="16" height="16"/>
         <image name="feed" width="30" height="30"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="obama" width="960" height="640"/>
         <image name="saved" width="21" height="30"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
