@@ -17,6 +17,6 @@ class GradientView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let gradientLayer = layer as! CAGradientLayer
-        gradientLayer.colors = [UIColor.darkGray.cgColor, UIColor.clear]
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear]
     }
 }

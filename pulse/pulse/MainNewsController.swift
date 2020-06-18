@@ -53,6 +53,13 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
         return uiView
     }()
     
+    lazy private var pullRefresh: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.tintColor = .lightGray
+        refresh.addTarget(self, action: #selector(pullDownAction), for: .valueChanged)
+        return refresh
+    }()
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +89,7 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
         
         tableview.delegate = self
         tableview.dataSource = self
+        tableview.refreshControl = pullRefresh
     }
     
     private func constructQueryParams(countries: String, topics: String) -> [String: Any] {
@@ -130,6 +138,12 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
         tableview.reloadData()
     }
     
+    // MARK: - Pull Down Refresh
+    @objc private func pullDownAction() {
+        loadFilter()
+        pullRefresh.endRefreshing()
+    }
+    
     // MARK: - Filter Button
     @IBAction func filterButton(_ sender: UIBarButtonItem) {
         // Present the filter view controller on a navigation controller
@@ -140,7 +154,6 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
         let navCon = UINavigationController(rootViewController: filterView)
         navCon.modalPresentationStyle = .fullScreen
         self.present(navCon, animated: true, completion: nil)
-        
     }
 }
 
@@ -261,10 +274,11 @@ extension MainNewsController: DidTapCellButton {
 extension MainNewsController: DonePressed {
     
     func dataFromFilter(topics: String, countries: String) {
-        // start spinner
+        
         var queryParams = constructQueryParams(countries: countries, topics: topics)
         populateRequest(queryParams: &queryParams)
-        
         saveFilter(topics: topics, countries: countries)
+        // Scroll tableview back to the top
+        tableview.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
