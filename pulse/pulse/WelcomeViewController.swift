@@ -34,7 +34,7 @@ class WelcomeViewController: UIViewController {
     
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .black
+        button.backgroundColor = .systemGray
         button.layer.cornerRadius = 7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
         button.setTitle("NEXT", for: .normal)
