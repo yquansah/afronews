@@ -31,7 +31,7 @@ class TopicCell: UICollectionViewCell {
     
     var viewToDim: UIView = {
         let uiView = UIView()
-        uiView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        uiView.backgroundColor = UIColor.systemGray
         uiView.isHidden = true
         return uiView
     }()
