@@ -32,12 +32,13 @@
         <scene sceneID="zIN-J5-3AW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3RT-3r-gDF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="feed" id="icX-r0-OAv"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="house" catalog="system" id="icX-r0-OAv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="fzR-af-KMm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -192,13 +193,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rX-9W-BsQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430.434782608696" y="-474.10714285714283"/>
+            <point key="canvasLocation" x="3859" y="-474"/>
         </scene>
         <!--Saved-->
         <scene sceneID="GS1-14-EqC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C3C-qg-gcw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Saved" image="saved" id="Spw-oE-kUf"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="bookmark" catalog="system" id="Spw-oE-kUf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="tSF-hl-QLT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -495,41 +496,58 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44O-nS-lIv">
-                                <rect key="frame" x="46" y="396" width="78" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Review"/>
-                                <connections>
-                                    <action selector="reviewBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="ge5-XR-uvc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bus-9P-S6T">
-                                <rect key="frame" x="179" y="396" width="168" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Send Feedback"/>
-                                <connections>
-                                    <action selector="feedbackBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="9Jk-E4-G1V"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ifn-Hg-zyg">
+                                <rect key="frame" x="20" y="264" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44O-nS-lIv">
+                                        <rect key="frame" x="0.0" y="0.0" width="179" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Review">
+                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reviewBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="ge5-XR-uvc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bus-9P-S6T">
+                                        <rect key="frame" x="195" y="0.0" width="179" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="  Send Feedback  ">
+                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="feedbackBtnTapped:" destination="PFx-5J-yrV" eventType="touchUpInside" id="9Jk-E4-G1V"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8Sr-7Q-Vqj"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="44O-nS-lIv" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="46" id="3B5-iV-SxU"/>
                             <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="20" id="3vh-sh-esQ"/>
+                            <constraint firstItem="Ifn-Hg-zyg" firstAttribute="top" secondItem="QPc-uA-uGv" secondAttribute="bottom" constant="16" id="4ML-zj-lSB"/>
                             <constraint firstItem="QPc-uA-uGv" firstAttribute="top" secondItem="ZPY-mJ-403" secondAttribute="top" constant="20" id="56e-pc-whZ"/>
+                            <constraint firstItem="Ifn-Hg-zyg" firstAttribute="leading" secondItem="ZPY-mJ-403" secondAttribute="leading" constant="20" id="5GA-Ra-voK"/>
                             <constraint firstItem="QPc-uA-uGv" firstAttribute="leading" secondItem="0aS-yD-Ww7" secondAttribute="leadingMargin" id="FJG-A2-DK5"/>
-                            <constraint firstItem="bus-9P-S6T" firstAttribute="leading" secondItem="44O-nS-lIv" secondAttribute="trailing" constant="55" id="GHD-4t-cqk"/>
-                            <constraint firstItem="ZPY-mJ-403" firstAttribute="bottom" secondItem="44O-nS-lIv" secondAttribute="bottom" constant="287" id="S3M-iC-zT7"/>
+                            <constraint firstItem="ZPY-mJ-403" firstAttribute="trailing" secondItem="Ifn-Hg-zyg" secondAttribute="trailing" constant="20" id="PpJ-rP-Xk1"/>
                             <constraint firstItem="ZPY-mJ-403" firstAttribute="trailing" secondItem="QPc-uA-uGv" secondAttribute="trailing" constant="20" id="SeB-KU-WVq"/>
-                            <constraint firstItem="44O-nS-lIv" firstAttribute="baseline" secondItem="bus-9P-S6T" secondAttribute="baseline" id="xcH-E5-t0H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPY-mJ-403"/>
                     </view>
                     <navigationItem key="navigationItem" id="txz-ts-Ll0"/>
+                    <connections>
+                        <outlet property="feedbackButton" destination="bus-9P-S6T" id="9H7-VH-2uE"/>
+                        <outlet property="reviewButton" destination="44O-nS-lIv" id="sLf-hE-jv2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYn-ml-iN9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740.5797101449277" y="-1147.0982142857142"/>
+            <point key="canvasLocation" x="2728" y="-474"/>
         </scene>
         <!--Covid Tracker-->
         <scene sceneID="scq-Ue-Bgp">
@@ -539,7 +557,7 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A1G-Ac-8ys">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A1G-Ac-8ys">
                                 <rect key="frame" x="0.0" y="222" width="414" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -576,13 +594,13 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed Cases:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7x-81-7ym">
                                 <rect key="frame" x="30" y="119" width="156.5" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Stats" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-bM-zjF">
                                 <rect key="frame" x="128" y="90" width="167" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Covid-19 Tracker" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsC-mK-JQC">
@@ -591,7 +609,7 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                                     <constraint firstAttribute="height" constant="35" id="jIP-Xf-qvA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deaths:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWz-WY-11K">
@@ -600,11 +618,11 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                                     <constraint firstAttribute="height" constant="33" id="TbW-1H-5bL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="z7x-81-7ym" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" constant="30" id="6JB-q7-jLX"/>
                             <constraint firstItem="yXD-bM-zjF" firstAttribute="leading" secondItem="A5Q-yn-6dh" secondAttribute="leading" constant="128" id="HPi-HA-Mw0"/>
@@ -624,7 +642,7 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A5Q-yn-6dh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Covid Tracker" selectedImage="magnifyingglass.circle" catalog="system" id="enG-hw-Dd0"/>
+                    <tabBarItem key="tabBarItem" title="Covid Tracker" image="asterisk.circle" catalog="system" id="enG-hw-Dd0"/>
                     <connections>
                         <outlet property="globalCasesLabel" destination="z7x-81-7ym" id="7X0-Jl-tTr"/>
                         <outlet property="globalDeathsLabel" destination="jWz-WY-11K" id="uxC-YL-lwv"/>
@@ -637,6 +655,7 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="asterisk.circle" catalog="system" width="128" height="121"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="btn_bookmark" width="11" height="16"/>
         <image name="btn_share" width="16" height="16"/>
