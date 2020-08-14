@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-Fd-H2o">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_alt" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-Fd-H2o">
                                 <rect key="frame" x="0.0" y="44" width="414" height="301"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -233,7 +233,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="Iws-ex-047">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_alt" translatesAutoresizingMaskIntoConstraints="NO" id="Iws-ex-047">
                                                     <rect key="frame" x="254" y="18" width="140" height="140"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="ovu-uA-sTy"/>
@@ -369,7 +369,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-Qr-rbo">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_alt" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-Qr-rbo">
                                                     <rect key="frame" x="254" y="18" width="140" height="140"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="8HA-Yd-Eon"/>
@@ -659,9 +659,11 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="btn_bookmark" width="11" height="16"/>
         <image name="btn_share" width="16" height="16"/>
-        <image name="default" width="250" height="250"/>
-        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="feed" width="30" height="30"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="saved" width="21" height="30"/>
+        <image name="splash_alt" width="253" height="450"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
