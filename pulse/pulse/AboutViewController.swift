@@ -10,6 +10,9 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var feedbackButton: UIButton!
+    
     @IBAction func feedbackBtnTapped(_ sender: UIButton) {
         aboutAlert()
     }
@@ -28,7 +31,8 @@ class AboutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        reviewButton.layer.cornerRadius = 5
+        feedbackButton.layer.cornerRadius = 5
     }
 
 }

@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.cornerRadius = 8
+        self.view.layer.cornerRadius = 12
         self.view.layer.masksToBounds = true
         readButton.layer.cornerRadius = 5
     }
