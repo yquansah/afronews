@@ -33,11 +33,6 @@ class NewsMainCell: UITableViewCell {
         setupCell()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        mainImage.image = UIImage(named: "spash_alt")
-    }
-    
     private func setupCell() {
         let share = UITapGestureRecognizer(target: self, action: #selector(shareRecognizer(gesture:)))
         shareButton.addGestureRecognizer(share)
