@@ -19,6 +19,7 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
     private var mainArticles = ArticleStore()
     private var savedArticle = SavedArticle()
     private var api: API!
+    private var isRefreshFromPullDown = false
 
   //  var webView: WKWebView!
     
@@ -97,7 +98,10 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
     }
     
     public func populateRequest(queryParams: inout [String: Any]) {
-        indicateActivity.startAnimating()
+        if !isRefreshFromPullDown {
+            // if refreshFromDown is false then show animation
+            indicateActivity.startAnimating()
+        }
         api.makeRequest(index: 0, params: &queryParams) { [weak self] response in
             let data = JSON(response)
             self?.parse(json: data)
@@ -123,8 +127,13 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
             
             articles.append(newArticle)
         }
-        // Stop spinner, check if empty and either reload or show text to user
-        indicateActivity.stopAnimating()
+        // Stop spinner (or pull down refresh), check if empty and either reload or show text to user
+        if isRefreshFromPullDown {
+            pullRefresh.endRefreshing()
+            isRefreshFromPullDown = false
+        } else {
+            indicateActivity.stopAnimating()
+        }
         
         if articles.isEmpty {
             tableview.isHidden = true
@@ -140,8 +149,8 @@ class MainNewsController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Pull Down Refresh
     @objc private func pullDownAction() {
+        isRefreshFromPullDown = true
         loadFilter()
-        pullRefresh.endRefreshing()
     }
     
     // MARK: - Filter Button
