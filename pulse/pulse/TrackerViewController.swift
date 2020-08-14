@@ -46,12 +46,11 @@ class TrackerViewController: UIViewController {
     
     // MARK: - API calls
     
-    let apiURL: String = "https://coronavirus-tracker-api.herokuapp.com/v2/"
+    let apiURL: String = "https://polar-sea-76936.herokuapp.com/api/coronavirus"
     
     func fetchStats() {
-        let urlString = "\(apiURL)locations"
         indicateActivity.startAnimating()
-        performRequest(urlString: urlString)
+        performRequest(urlString: apiURL)
     }
     
     //url, url session, task, resume , parsejson
