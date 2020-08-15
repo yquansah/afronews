@@ -61,7 +61,7 @@ class TrackerViewController: UIViewController {
             let task = session.dataTask(with: url) {[weak self] (data, _, error) in
                 if error != nil {
                     //Do something
-                    // print(error)
+                     print(error)
                 }
                 
                 let validData = JSON(data as Any)
@@ -87,7 +87,10 @@ class TrackerViewController: UIViewController {
             
             countryStats.append(countryStat)
         }
-        self.countryStats = countryStats
+
+        let consolidator = Consolidator(countryStats: countryStats)
+
+        self.countryStats = consolidator.consolidate()
     }
     
 }

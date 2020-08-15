@@ -36,6 +36,7 @@
 		86A5EC052308A2040025073F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5EC012308A2040025073F /* Filter.swift */; };
 		AD10DAF7246CF919007D6206 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10DAF6246CF919007D6206 /* WebViewController.swift */; };
 		AD10DAF9246CFB42007D6206 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10DAF8246CFB42007D6206 /* AboutViewController.swift */; };
+		ADB619C124E8764000D38337 /* Consolidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB619C024E8764000D38337 /* Consolidator.swift */; };
 		ADCD56E22380B7FA0036F41A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD56E12380B7FA0036F41A /* DetailViewController.swift */; };
 		ADDC71DF23F087A8004ABEA7 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADDC71DE23F087A8004ABEA7 /* countries.txt */; };
 		ADE7F335248DF71E0080B3E1 /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE7F334248DF71E0080B3E1 /* TrackerViewController.swift */; };
@@ -78,6 +79,7 @@
 		86A5EC012308A2040025073F /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		AD10DAF6246CF919007D6206 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD10DAF8246CFB42007D6206 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		ADB619C024E8764000D38337 /* Consolidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consolidator.swift; sourceTree = "<group>"; };
 		ADCD56E12380B7FA0036F41A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ADDC71DE23F087A8004ABEA7 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries.txt; sourceTree = "<group>"; };
 		ADE7F334248DF71E0080B3E1 /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				249EA38423B6CF84007B2C95 /* FilterData.swift */,
 				86A5EBFF2308A2030025073F /* Saved.swift */,
 				8479E1C5243084D30036CAAA /* SavedArticle.swift */,
+				ADB619C024E8764000D38337 /* Consolidator.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				E3D016B524678EB500438683 /* storage.swift in Sources */,
 				86A5EC042308A2040025073F /* ArticleStore.swift in Sources */,
 				246ADF69246BD61200175207 /* InitialClassTabBarVC.swift in Sources */,
+				ADB619C124E8764000D38337 /* Consolidator.swift in Sources */,
 				86A5EC032308A2040025073F /* Saved.swift in Sources */,
 				2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */,
 				AD10DAF9246CFB42007D6206 /* AboutViewController.swift in Sources */,
@@ -546,7 +550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FP75MCYZG;
+				DEVELOPMENT_TEAM = DNT3ZRB35C;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +558,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bdt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FP75MCYZG;
+				DEVELOPMENT_TEAM = DNT3ZRB35C;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,7 +580,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bdt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
