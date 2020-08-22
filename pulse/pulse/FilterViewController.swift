@@ -102,13 +102,17 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
             
         } else {
             if !topics.isEmpty || !countries.isEmpty {
+                let selectedTopic = topics.joined(separator: " ")
+                let selectedCountry = countries.joined(separator: " ")
+                let combined = ["topic": selectedTopic, "country": selectedCountry]
+                PulseAnalytics.logCountryTopic(with: combined) // Log what was selected to firebase
                 
-                defaults.set(topics.joined(separator: " "), forKey: "topics")
-                defaults.set(countries.joined(separator: " "), forKey: "countries")
+                defaults.set(selectedTopic, forKey: "topics")
+                defaults.set(selectedCountry, forKey: "countries")
                 
                 // Check if it is the first time user is opening the app and send them either back to app delegate or to the main VC
                 if defaults.value(forKey: "isFirstTime") != nil {
-                    delegate?.dataFromFilter(topics: topics.joined(separator: " "), countries: countries.joined(separator: " "))
+                    delegate?.dataFromFilter(topics: selectedTopic, countries: selectedCountry)
                     self.dismiss(animated: false, completion: nil)
                     return
                 }

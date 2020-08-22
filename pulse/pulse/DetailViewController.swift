@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     
     weak var delegate: ReadyToDismiss?
     var article: Article?
-
+    
     @IBOutlet private weak var mainImage: UIImageView!
     @IBOutlet private weak var mainTitle: UILabel!
     @IBOutlet private weak var mainDescription: UILabel!
@@ -41,27 +41,29 @@ class DetailViewController: UIViewController {
             Nuke.loadImage(with: url, into: mainImage)
         }
     }
-
+    
     @IBAction func redirToSourceButton(_ sender: UIButton) {
+        PulseAnalytics.logClickedReadMoreButton() // Log firebase that this button has been clicked
         
-            self.remove()
+        self.remove()
         //    UIApplication.shared.open(url)
-            delegate?.displayWebView(with: link)
-            delegate?.removeDim()
-
+        delegate?.displayWebView(with: link)
+        delegate?.removeDim()
+        
     }
     @IBAction func dismissView(_ sender: UIButton) {
         self.remove()
         // Alert parent so the dimmed background is removed
         delegate?.removeDim()
     }
-
+    
     @IBAction func shareButton(_ sender: UIButton) {
         self.shareArticle(article: article!)
     }
-
+    
     @IBAction func saveButton(_ sender: UIButton) {
+        PulseAnalytics.logSaveArticle() // Log that an article has been saved
         self.saveArticle(article: article!)
     }
-
+    
 }
