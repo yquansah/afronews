@@ -659,10 +659,8 @@ Created by Yoofi, Kwabz, Kameni &amp; Adnan.</string>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="btn_bookmark" width="11" height="16"/>
         <image name="btn_share" width="16" height="16"/>
-        <image name="feed" width="30" height="30"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
-        <image name="saved" width="21" height="30"/>
         <image name="splash_alt" width="253" height="450"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
