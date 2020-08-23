@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2430142B2308B5C000F6E0E4 /* NewsMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */; };
+		24356FA524F0D4E800D9CF05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24356FA424F0D4E800D9CF05 /* GoogleService-Info.plist */; };
+		24356FA824F0D87600D9CF05 /* PulseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24356FA724F0D87600D9CF05 /* PulseAnalytics.swift */; };
 		2462D21F2487355600547088 /* HelperClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D21E2487355600547088 /* HelperClasses.swift */; };
 		2462D22224873EB700547088 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D22124873EB700547088 /* WelcomeViewController.swift */; };
 		2462D22424873F8100547088 /* PulseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2462D22324873F8100547088 /* PulseProtocols.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		2430142A2308B5C000F6E0E4 /* NewsMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMainCell.swift; sourceTree = "<group>"; };
+		24356FA424F0D4E800D9CF05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		24356FA724F0D87600D9CF05 /* PulseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnalytics.swift; sourceTree = "<group>"; };
 		2462D21E2487355600547088 /* HelperClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClasses.swift; sourceTree = "<group>"; };
 		2462D22124873EB700547088 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2462D22324873F8100547088 /* PulseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseProtocols.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				86A3A08622D8328000A8DE84 /* view */,
 				86A3A08522D8325300A8DE84 /* model */,
 				24E8242E22B88145006EAE11 /* Info.plist */,
+				24356FA424F0D4E800D9CF05 /* GoogleService-Info.plist */,
 				24E8242922B88145006EAE11 /* Assets.xcassets */,
 			);
 			path = pulse;
@@ -203,6 +208,7 @@
 				246ADF66246BA6AE00175207 /* PulseExtensions.swift */,
 				2462D21E2487355600547088 /* HelperClasses.swift */,
 				2462D22324873F8100547088 /* PulseProtocols.swift */,
+				24356FA724F0D87600D9CF05 /* PulseAnalytics.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 				24E8241D22B88140006EAE11 /* Resources */,
 				AD63340D22D8010100F778B7 /* SwiftLint script */,
 				EFA35870155DF85DF5937A9F /* [CP] Embed Pods Frameworks */,
+				24356FA624F0D7DB00D9CF05 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -299,12 +306,30 @@
 				2462D226248769AC00547088 /* welcome.txt in Resources */,
 				24E8242822B88141006EAE11 /* Main.storyboard in Resources */,
 				ADDC71DF23F087A8004ABEA7 /* countries.txt in Resources */,
+				24356FA524F0D4E800D9CF05 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		24356FA624F0D7DB00D9CF05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		3BCBB25C2E005C7A9637A90E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -385,6 +410,7 @@
 				2464F3912380BDAE004236A1 /* FilterViewController.swift in Sources */,
 				2462D22424873F8100547088 /* PulseProtocols.swift in Sources */,
 				2462D21F2487355600547088 /* HelperClasses.swift in Sources */,
+				24356FA824F0D87600D9CF05 /* PulseAnalytics.swift in Sources */,
 				ADE7F335248DF71E0080B3E1 /* TrackerViewController.swift in Sources */,
 				860115E422E3BE36007FDDE0 /* afronewsapi.swift in Sources */,
 				8479E1C6243084D30036CAAA /* SavedArticle.swift in Sources */,
@@ -546,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNT3ZRB35C;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +580,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bdt.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,7 +594,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pulse/pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNT3ZRB35C;
+				DEVELOPMENT_TEAM = 7FP75MCYZG;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,7 +602,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bdt.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbt.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

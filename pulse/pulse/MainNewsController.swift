@@ -274,6 +274,7 @@ extension MainNewsController: DidTapCellButton {
     }
     
     func didTapSaveButton(article: Article) {
+        PulseAnalytics.logSaveArticle() // Log that an article has been saved
         self.saveArticle(article: article)
     }
 

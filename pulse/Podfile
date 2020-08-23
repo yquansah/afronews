@@ -10,4 +10,8 @@ target 'pulse' do
   pod 'Nuke', '~> 7.5.2'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 end
