@@ -75,22 +75,21 @@ class TrackerViewController: UIViewController {
     func parse(json: JSON) {
         var countryStats = [TrackerCountryModel]()
         //Yes, the below should probably be encapsulated in methods. :)
-        globalLatest.confirmed = json["latest"]["confirmed"].intValue
-        globalLatest.deaths = json["latest"]["deaths"].intValue
-        
-        for result in json["locations"].arrayValue {
+        globalLatest.confirmed = json["totalConfirmed"].intValue
+        globalLatest.deaths = json["totalDeaths"].intValue
+
+        let jsonResults = json["countryResults"].dictionaryValue
+        let sortedKeys = Array(jsonResults.keys).sorted()
+        for key in sortedKeys {
             var countryStat = TrackerCountryModel()
-            countryStat.country = result["country"].stringValue
-            countryStat.confirmed = result["latest"]["confirmed"].intValue
-            countryStat.deaths = result["latest"]["deaths"].intValue
-            countryStat.population = result["country_population"].intValue
-            
+            countryStat.country = key
+            guard let countryInfo = jsonResults[key] else { return }
+            countryStat.confirmed = countryInfo["confirmed"].intValue
+            countryStat.deaths = countryInfo["deaths"].intValue
             countryStats.append(countryStat)
         }
 
-        let consolidator = Consolidator(countryStats: countryStats)
-
-        self.countryStats = consolidator.consolidate()
+        self.countryStats = countryStats
     }
     
 }
@@ -107,7 +106,6 @@ extension TrackerViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = "Cases: \(countryStats[indexPath.row].confirmed.withCommas()), Deaths: \(countryStats[indexPath.row].deaths.withCommas())"
         return cell
     }
-    
 }
 
 extension Int {
