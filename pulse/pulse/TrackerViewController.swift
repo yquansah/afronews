@@ -80,7 +80,6 @@ class TrackerViewController: UIViewController {
 
         let jsonResults = json["Countries"].arrayValue
         var countryStat = TrackerCountryModel()
-        print("This is: \(jsonResults)")
         for country in jsonResults {
             countryStat.country = country["Country"].stringValue
             countryStat.confirmed = country["TotalConfirmed"].intValue
@@ -102,7 +101,7 @@ extension TrackerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         cell.textLabel?.text = countryStats[indexPath.row].country
-        cell.detailTextLabel?.text = "Cases: \(countryStats[indexPath.row].confirmed.withCommas()), Deaths: \(countryStats[indexPath.row].deaths.withCommas())"
+        cell.detailTextLabel?.text = "Cases: \(countryStats[indexPath.row].confirmed.withCommas()) Deaths: \(countryStats[indexPath.row].deaths.withCommas())"
         return cell
     }
 }
