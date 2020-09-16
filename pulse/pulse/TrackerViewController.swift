@@ -46,7 +46,7 @@ class TrackerViewController: UIViewController {
     
     // MARK: - API calls
     
-    let apiURL: String = "https://api.covid19api.com/summary"
+    let apiURL: String = "https://polar-sea-76936.herokuapp.com/api/coronavirus"
     
     func fetchStats() {
         indicateActivity.startAnimating()
