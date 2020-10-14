@@ -75,17 +75,15 @@ class TrackerViewController: UIViewController {
     func parse(json: JSON) {
         var countryStats = [TrackerCountryModel]()
         //Yes, the below should probably be encapsulated in methods. :)
-        globalLatest.confirmed = json["totalConfirmed"].intValue
-        globalLatest.deaths = json["totalDeaths"].intValue
+        globalLatest.confirmed = json["Global"]["TotalConfirmed"].intValue
+        globalLatest.deaths = json["Global"]["TotalDeaths"].intValue
 
-        let jsonResults = json["countryResults"].dictionaryValue
-        let sortedKeys = Array(jsonResults.keys).sorted()
-        for key in sortedKeys {
-            var countryStat = TrackerCountryModel()
-            countryStat.country = key
-            guard let countryInfo = jsonResults[key] else { return }
-            countryStat.confirmed = countryInfo["confirmed"].intValue
-            countryStat.deaths = countryInfo["deaths"].intValue
+        let jsonResults = json["Countries"].arrayValue
+        var countryStat = TrackerCountryModel()
+        for country in jsonResults {
+            countryStat.country = country["Country"].stringValue
+            countryStat.confirmed = country["TotalConfirmed"].intValue
+            countryStat.deaths = country["TotalDeaths"].intValue
             countryStats.append(countryStat)
         }
 
@@ -103,7 +101,7 @@ extension TrackerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         cell.textLabel?.text = countryStats[indexPath.row].country
-        cell.detailTextLabel?.text = "Cases: \(countryStats[indexPath.row].confirmed.withCommas()), Deaths: \(countryStats[indexPath.row].deaths.withCommas())"
+        cell.detailTextLabel?.text = "Cases: \(countryStats[indexPath.row].confirmed.withCommas()) Deaths: \(countryStats[indexPath.row].deaths.withCommas())"
         return cell
     }
 }

@@ -95,8 +95,6 @@ class NewsMainCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 
         guard let publishedAt = dateFormatter.date(from: publishedDate) else { return "24h ago" }
-        print("This is the raw date: \(publishedDate)")
-        print(publishedAt)
         let interval = DateInterval(start: publishedAt, end: Date())
         let duration = Int(interval.duration) / 3600
 

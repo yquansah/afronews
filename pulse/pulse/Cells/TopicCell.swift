@@ -59,6 +59,7 @@ class TopicCell: UICollectionViewCell {
     
     func updateCell(with name: FilterData) {
         imageView.image = UIImage(named: name.itemName)
+        imageView.contentMode = .scaleAspectFit
         nameLabel.text = name.itemName
     }
     

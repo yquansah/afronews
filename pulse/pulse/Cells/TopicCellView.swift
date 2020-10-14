@@ -25,7 +25,7 @@ class TopicCellView: UICollectionViewCell {
     }()
     private let topicCellID = "topicCell"
     
-    let topics = ["Business", "Entertainment", "Politics", "Sports", "Technology"]
+    let topics = ["Business", "Entertainment", "Politics", "Sports", "Technology", "Fashion", "Health"]
     
     var finalData = [FilterData]()
 
