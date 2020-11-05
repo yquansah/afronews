@@ -13,9 +13,20 @@ class SavedViewController: UIViewController {
     
     var articles: Results<SavedArticle>?
 
+    var savedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Your saved articles will appear here."
+
+        return label
+    }()
+
     @IBOutlet weak var tableview: UITableView!
     
-    // Define variables
+ // Define variables
 //    private var savedArticle = SavedArticle()
 //    private var api: API!
     
@@ -23,7 +34,8 @@ class SavedViewController: UIViewController {
         super.viewDidLoad()
         
         load()
-        
+        setupView()
+
         tableview.delegate = self
         tableview.dataSource = self
     }
@@ -36,6 +48,31 @@ class SavedViewController: UIViewController {
         articles = Storage.loadArticles()
 
         tableview.reloadData()
+
+        if let articleCount = articles?.count {
+            if articleCount > 0 {
+                savedLabel.isHidden = true
+            } else {
+                savedLabel.isHidden = false
+            }
+        }
+
+//        if articles!.count > 0 {
+//            savedLabel.isHidden = true
+//        } else {
+//            savedLabel.isHidden = false
+//        }
+    }
+
+    private func setupView() {
+
+        view.addSubview(savedLabel)
+
+        savedLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        savedLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        savedLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        savedLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
+
     }
 
 }
